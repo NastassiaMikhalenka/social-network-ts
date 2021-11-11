@@ -1,3 +1,11 @@
 .nav{
     grid-area: n;
 }
+
+.item {
+    color: cornflowerblue;
+}
+
+.item a.nav-link {
+    color: gold;
+}
