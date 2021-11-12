@@ -7,7 +7,7 @@ type NavNarLinkType = {
     linkName: string
 }
 
-const NavNarLink = (props: NavNarLinkType) => {
+const NavBarLink = (props: NavNarLinkType) => {
     return (
     <div className={classes.item}>
         <NavLink to={props.linkTo} className={(NavNarLinkType) => NavNarLinkType.isActive ? classes.active : ''}
@@ -20,19 +20,19 @@ const Navbar = () => {
     return (
         <nav className={classes.nav}>
             <div className={classes.item}>
-                <NavNarLink linkTo={"/profile"} linkName={"Profile"} />
+                <NavBarLink linkTo={"/profile"} linkName={"Profile"} />
             </div>
             <div className={classes.item}>
-                <NavNarLink linkTo={"/dialogs"} linkName={"Messages"} />
+                <NavBarLink linkTo={"/dialogs"} linkName={"Messages"} />
             </div>
             <div className={classes.item}>
-                <NavNarLink linkTo={"/news"} linkName={"News"} />
+                <NavBarLink linkTo={"/news"} linkName={"News"} />
             </div>
             <div className={classes.item}>
-                <NavNarLink linkTo={"/music"} linkName={"Music"} />
+                <NavBarLink linkTo={"/music"} linkName={"Music"} />
             </div>
             <div className={classes.item}>
-                <NavNarLink linkTo={"/settings"} linkName={"Settings"} />
+                <NavBarLink linkTo={"/settings"} linkName={"Settings"} />
             </div>
         </nav>
     )
