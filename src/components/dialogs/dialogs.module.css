@@ -1,3 +1,20 @@
 .dialogs{
     display: flex;
+    align-content: center;
+    justify-content: space-around;
+}
+
+.dialogsItem{
+    padding: 10px;
+}
+
+.dialog{
+
+}
+.messages{
+
+}
+
+.message{
+
 }

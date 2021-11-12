@@ -4,7 +4,6 @@ import MyPosts from "./myPosts/MyPosts";
 import HeaderProfile from "./../../assets/HeaderPhoto.jpeg"
 
 
-
 const Profile = () => {
     return (
         <div>
