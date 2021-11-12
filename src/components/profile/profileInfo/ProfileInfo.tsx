@@ -1,18 +1,33 @@
 import React from "react";
 import classes from "./profileInfo.module.css";
-import HeaderProfile from "../../../assets/HeaderPhoto.jpeg";
 
 
-const ProfileInfo = () => {
+type ProfileInfoType = {
+    img: string
+    avatar: string
+    name: string
+    location: string
+    description: string
+}
+
+
+const ProfileInfo = (props: ProfileInfoType) => {
     return (
-        <div>
-            <div className={classes.contentProfile}>
-                <img src={HeaderProfile} alt='#'/>
+        <>
+            <div className={classes.contentProfilePhoto}>
+                <img src={props.img} alt='#'/>
              </div>
-            <div className={classes.profileAvatar}>
-                <img src='https://i2.wp.com/neptune.ai/wp-content/uploads/blurring-image-pgmagick.jpg?resize=256%2C256&ssl=1' alt='#'/>
+            <div className={classes.contentProfileInfo}>
+                <div className={classes.profileAvatar}>
+                    <img src={props.avatar} alt='#'/>
+                </div>
+                <div>
+                    <p>{props.name}</p>
+                    <p>{props.location}</p>
+                    <p>{props.description}</p>
+                </div>
             </div>
-        </div>
+        </>
     )
 }
 

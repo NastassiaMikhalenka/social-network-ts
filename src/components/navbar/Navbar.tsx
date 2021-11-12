@@ -19,21 +19,11 @@ const NavBarLink = (props: NavNarLinkType) => {
 const Navbar = () => {
     return (
         <nav className={classes.nav}>
-            <div className={classes.item}>
-                <NavBarLink linkTo={"/profile"} linkName={"Profile"} />
-            </div>
-            <div className={classes.item}>
-                <NavBarLink linkTo={"/dialogs"} linkName={"Messages"} />
-            </div>
-            <div className={classes.item}>
-                <NavBarLink linkTo={"/news"} linkName={"News"} />
-            </div>
-            <div className={classes.item}>
-                <NavBarLink linkTo={"/music"} linkName={"Music"} />
-            </div>
-            <div className={classes.item}>
-                <NavBarLink linkTo={"/settings"} linkName={"Settings"} />
-            </div>
+            <NavBarLink linkTo={"/profile"} linkName={"Profile"} />
+            <NavBarLink linkTo={"/dialogs"} linkName={"Messages"} />
+            <NavBarLink linkTo={"/news"} linkName={"News"} />
+            <NavBarLink linkTo={"/music"} linkName={"Music"} />
+            <NavBarLink linkTo={"/settings"} linkName={"Settings"} />
         </nav>
     )
 }

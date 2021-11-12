@@ -1,7 +1,14 @@
-.content .contentProfile img{
-    width: 900px;
+.contentProfilePhoto img {
+    width: 100%;
 }
 
-.content .profileAvatar img{
-    width: 160px;
+.contentProfileInfo{
+    display: flex;
 }
+
+.contentProfileInfo img{
+    height: 170px;
+    border-radius: 50%;
+    padding: 20px;
+}
+

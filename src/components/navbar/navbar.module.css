@@ -2,10 +2,24 @@
     grid-area: n;
 }
 
-.item {
-    color: cornflowerblue;
+.active {
+    color: #000000;
+    border-left: #0077B5 solid 4px;
+}
+.item{
+    margin: 15px;
 }
 
-.active {
-    color: gold;
+a{
+    color: #575757;
+    text-decoration: none;
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-right: 50px;
+    padding: 10px;
 }
+
+a:hover{
+    color: #000000;
+}
+
