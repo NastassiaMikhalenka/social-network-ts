@@ -6,6 +6,6 @@
     color: cornflowerblue;
 }
 
-.item a.nav-link {
+.active {
     color: gold;
 }
