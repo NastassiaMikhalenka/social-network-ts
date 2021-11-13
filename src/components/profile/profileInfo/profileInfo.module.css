@@ -19,14 +19,27 @@
 
 .nameAndLocation{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    margin-bottom: 18px;
 }
 
-.laravel_icon {
-    background: url("src/assets/navigation.png") no-repeat left center;
+.infoLocation {
+    background: url('/src/assets/navigation.png') no-repeat left center;
     background-size: 16px;
     display:inline-block;
     vertical-align:bottom;
     padding-left: 25px;
+    font-size: 16px;
+    line-height: 150%;
+}
+.infoName{
+    font-size: 23px;
+    line-height: 17px;
+    font-weight: bold;
+}
+
+.infoDescription{
+    font-size: 18px;
+    line-height: 150%;
 }
 
