@@ -1,3 +1,4 @@
+
 .contentProfilePhoto img {
     width: 100%;
 }
@@ -10,5 +11,22 @@
     height: 170px;
     border-radius: 50%;
     padding: 20px;
+}
+
+.contentDescription{
+    margin: 20px;
+}
+
+.nameAndLocation{
+    display: flex;
+    justify-content: space-around;
+}
+
+.laravel_icon {
+    background: url("src/assets/navigation.png") no-repeat left center;
+    background-size: 16px;
+    display:inline-block;
+    vertical-align:bottom;
+    padding-left: 25px;
 }
 

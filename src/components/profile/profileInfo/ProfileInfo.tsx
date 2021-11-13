@@ -10,7 +10,6 @@ type ProfileInfoType = {
     description: string
 }
 
-
 const ProfileInfo = (props: ProfileInfoType) => {
     return (
         <>
@@ -21,10 +20,13 @@ const ProfileInfo = (props: ProfileInfoType) => {
                 <div className={classes.profileAvatar}>
                     <img src={props.avatar} alt='#'/>
                 </div>
-                <div>
-                    <p>{props.name}</p>
-                    <p>{props.location}</p>
-                    <p>{props.description}</p>
+                <div className={classes.contentDescription}>
+                    <div className={classes.nameAndLocation}>
+                        <p className={classes.infoName}>{props.name}</p>
+                        <a className={classes.laravel_icon} href="#">{props.location}</a>
+                        <p className={classes.infoLocation}>{props.location}</p>
+                    </div>
+                    <p className={classes.infoDescription}>{props.description}</p>
                 </div>
             </div>
         </>

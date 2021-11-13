@@ -1,5 +1,5 @@
 import React from "react";
-import classes from "./profile.module.css"
+// import classes from "./profile.module.css"
 import MyPosts from "./myPosts/MyPosts";
 import ProfileInfo from "./profileInfo/ProfileInfo";
 import HeaderProfile from "../../assets/headerPhoto.png";
