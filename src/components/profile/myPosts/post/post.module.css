@@ -1,3 +1,42 @@
-.post img {
-    width: 30px;
+.postWrapper{
+    padding: 10px;
+    border-bottom: 1px solid grey;
+}
+.postWrapper img {
+    width: 60px;
+}
+
+.postAva{
+    display: flex;
+    padding: 10px 0 0 30px;
+}
+
+.name{
+    margin-left: 10px;
+    font-size: 18px;
+    line-height: 17px;
+    padding: 10px;
+}
+
+.message{
+    font-size: 16px;
+    line-height: 17px;
+    padding: 20px 0 0 30px;
+}
+
+.like{
+    font-size: 15px;
+    line-height: 18px;
+    display: flex;
+    align-items: center;
+    align-self: center;
+    padding: 15px 0 20px 30px;
+}
+
+.likeCount{
+    font-weight: bold;
+}
+
+.like span{
+    padding-right: 5px;
 }
