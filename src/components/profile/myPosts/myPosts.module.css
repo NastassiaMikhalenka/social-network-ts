@@ -1,0 +1,12 @@
+.postTextarea{
+    margin-top: 24px;
+    display: flex;
+    width: 50%;
+    border: none;
+    padding: 10px 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    resize: none;
+    font: 16px/22px
+    'Maven Pro', sans-serif;
+}
