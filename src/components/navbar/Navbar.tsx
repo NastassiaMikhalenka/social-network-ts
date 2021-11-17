@@ -20,7 +20,7 @@ const Navbar = () => {
     return (
         <nav className={classes.nav}>
             <NavBarLink linkTo={"/profile"} linkName={"Profile"} />
-            <NavBarLink linkTo={"/dialogs"} linkName={"Messages"} />
+            <NavBarLink linkTo={"/dialogs/*"} linkName={"Messages"} />
             <NavBarLink linkTo={"/news"} linkName={"News"} />
             <NavBarLink linkTo={"/music"} linkName={"Music"} />
             <NavBarLink linkTo={"/settings"} linkName={"Settings"} />
