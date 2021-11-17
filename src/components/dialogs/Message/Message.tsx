@@ -2,12 +2,12 @@ import React from "react";
 import classes from "../dialogs.module.css"
 // import {NavLink} from "react-router-dom";
 
-type MessageType = {
+type PropsType = {
     id: number
     message: string
 }
 
-const Message = (props: MessageType) => {
+const Message = (props: PropsType) => {
      return (
          <div className={classes.message}>{props.message}</div>
      )

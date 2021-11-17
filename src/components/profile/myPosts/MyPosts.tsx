@@ -1,28 +1,25 @@
 import React from "react";
-import Post, {PostPropsType} from "./post/Post";
+import Post from "./post/Post";
 import classes from "./myPosts.module.css";
 import AddBtn from "../../../assets/add.png"
 import Paperclip from "../../../assets/paperclip.png"
 import Group from "../../../assets/Group.png"
 import Image from "../../../assets/image.png"
-import {PostsDataType} from "../Profile";
+import {PostsDataType} from "../../../index";
 // import PostAvatar from "../../../assets/PhotoGirl.png"
 
-export type ButtonType = {
-    bgImg: string
-    title: string
+type PropsType = {
+    postsData: Array<PostsDataType>
 }
 
-export const Button = (props: ButtonType) => {
-    return <button className={classes.addBtn}><img src={props.bgImg} alt={props.title}/></button>
-}
-
-
-const MyPosts = (props: PostsDataType) => {
-
+const MyPosts = (props: PropsType) => {
     let postsElements =
-        props.postsData.map(post => <Post id={post.id} name={post.name} message={post.message} likeCount={post.likeCount}/>)
-
+        props.postsData.map(post => <Post
+            key={post.id}
+            id={post.id}
+            name={post.name}
+            message={post.message}
+            likeCount={post.likeCount}/>)
     return (
         <>
             <div className={classes.wrapper}>
@@ -42,3 +39,12 @@ const MyPosts = (props: PostsDataType) => {
 }
 
 export default MyPosts;
+
+type ButtonType = {
+    bgImg: string
+    title: string
+}
+
+const Button = (props: ButtonType) => {
+    return <button className={classes.addBtn}><img src={props.bgImg} alt={props.title}/></button>
+}

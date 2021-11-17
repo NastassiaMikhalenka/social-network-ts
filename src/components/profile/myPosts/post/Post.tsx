@@ -1,15 +1,14 @@
 import React from "react";
 import classes from "./post.module.css"
 
-export type PostPropsType = {
+type PropsType = {
     id: number
-    name: string | undefined
-    avatar?: string
+    name: string
     message: string
-    likeCount: null | number
+    likeCount: number
 };
 
-const Post = (props: PostPropsType) => {
+const Post = (props: PropsType) => {
     return (
         <div className={classes.postWrapper}>
             <div className={classes.postAva}>

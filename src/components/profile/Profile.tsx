@@ -4,14 +4,13 @@ import MyPosts from "./myPosts/MyPosts";
 import ProfileInfo from "./profileInfo/ProfileInfo";
 import HeaderProfile from "../../assets/headerPhoto.png";
 import Avatar from "../../assets/user.png";
-import {PostPropsType} from "./myPosts/post/Post";
+import {PostsDataType} from "../../index";
 
-export type PostsDataType = {
-    postsData: Array<PostPropsType>
+type PropsType = {
+    postsData: Array<PostsDataType>
 }
 
-const Profile = (props: PostsDataType) => {
-
+const Profile = (props: PropsType) => {
     return (
         <>
             <ProfileInfo
