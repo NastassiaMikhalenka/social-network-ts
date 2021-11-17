@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./post.module.css"
 
-type PostPropsType = {
+export type PostPropsType = {
     id: number
     name: string | undefined
     avatar?: string

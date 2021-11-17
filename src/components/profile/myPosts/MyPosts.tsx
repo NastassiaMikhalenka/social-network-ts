@@ -1,10 +1,11 @@
 import React from "react";
-import Post from "./post/Post";
+import Post, {PostPropsType} from "./post/Post";
 import classes from "./myPosts.module.css";
 import AddBtn from "../../../assets/add.png"
 import Paperclip from "../../../assets/paperclip.png"
 import Group from "../../../assets/Group.png"
 import Image from "../../../assets/image.png"
+import {PostsDataType} from "../Profile";
 // import PostAvatar from "../../../assets/PhotoGirl.png"
 
 export type ButtonType = {
@@ -16,13 +17,11 @@ export const Button = (props: ButtonType) => {
     return <button className={classes.addBtn}><img src={props.bgImg} alt={props.title}/></button>
 }
 
-const MyPosts = () => {
-    let postsData = [
-        {id: 1, name: "Helen", message: "Hello?", likeCount: 7},
-        {id: 2, name: "Helen", message: "What did the Dursleys care if Harry lost his place on the House Quidditch team because he hadn’t practiced all summer?", likeCount: null}
-    ]
 
-    let postsElements = postsData.map(post => <Post id={post.id} name={post.name} message={post.message} likeCount={post.likeCount}/>)
+const MyPosts = (props: PostsDataType) => {
+
+    let postsElements =
+        props.postsData.map(post => <Post id={post.id} name={post.name} message={post.message} likeCount={post.likeCount}/>)
 
     return (
         <>
