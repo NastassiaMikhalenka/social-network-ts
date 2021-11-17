@@ -22,6 +22,8 @@ const MyPosts = () => {
         {id: 2, name: "Helen", message: "What did the Dursleys care if Harry lost his place on the House Quidditch team because he hadn’t practiced all summer?", likeCount: null}
     ]
 
+    let postsElements = postsData.map(post => <Post id={post.id} name={post.name} message={post.message} likeCount={post.likeCount}/>)
+
     return (
         <>
             <div className={classes.wrapper}>
@@ -33,9 +35,9 @@ const MyPosts = () => {
                     <Button bgImg={Image} title={'#'}/>
                 </div>
             </div>
-            <Post id={postsData[0].id} name={postsData[0].name} message={postsData[0].message} likeCount={postsData[0].likeCount}/>
-            <Post id={postsData[1].id} name={postsData[1].name} message={postsData[1].message} likeCount={postsData[1].likeCount}/>
-
+            {postsElements}
+            {/*<Post id={postsData[0].id} name={postsData[0].name} message={postsData[0].message} likeCount={postsData[0].likeCount}/>*/}
+            {/*<Post id={postsData[1].id} name={postsData[1].name} message={postsData[1].message} likeCount={postsData[1].likeCount}/>*/}
         </>
     )
 }
