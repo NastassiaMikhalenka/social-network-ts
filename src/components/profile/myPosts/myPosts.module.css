@@ -16,8 +16,8 @@
     border-radius: 5px 5px 0 0;
     font: 16px/22px
     'Maven Pro', sans-serif;
-
 }
+
 .blockBtns{
     display: flex;
     flex-direction: row-reverse;
@@ -26,6 +26,7 @@
     align-items: flex-end;
     border-radius: 0 0 0 5px;
 }
+
 .addBtn{
     width: 36px;
     height: 36px;

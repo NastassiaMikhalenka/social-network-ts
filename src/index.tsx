@@ -42,18 +42,12 @@ import state from './redux/state';
 //     message: string
 // }
 
-// export type StateType = {
-//     postsData: Array<PostsDataType>
-//     dialogsData: Array<DialogItemType>
-//     messagesData: Array<MessageItemType>
-// }
 
 
 ReactDOM.render(
   <React.StrictMode>
       <BrowserRouter>
-    <App
-        state={state}
+    <App state={state}
         // postsData={postsData}
         // dialogsData={dialogsData}
         // messagesData={messagesData}
