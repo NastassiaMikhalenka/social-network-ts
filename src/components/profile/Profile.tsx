@@ -4,11 +4,10 @@ import MyPosts from "./myPosts/MyPosts";
 import ProfileInfo from "./profileInfo/ProfileInfo";
 import HeaderProfile from "../../assets/headerPhoto.png";
 import Avatar from "../../assets/user.png";
-import {PostsDataType} from "../../redux/state";
-// import {PostsDataType} from "../../index";
+import {ProfilePageType} from "../../redux/state";
 
 type PropsType = {
-    postsData: Array<PostsDataType>
+    state: ProfilePageType
 }
 
 const Profile = (props: PropsType) => { // принимаем в  пропсах postsData и сделали типизацию как PropsType, переходим на уроверь ниже в MyPosts
@@ -21,7 +20,7 @@ const Profile = (props: PropsType) => { // принимаем в  пропсах
                 location={"Saint Petersburg, Russian Federation"}
                 description={"Freelance UX/UI designer, 80+ projects in web design, mobile apps  (iOS & android) and creative projects. Open to offers."}
             />
-            <MyPosts postsData={props.postsData}/>
+            <MyPosts postsData={props.state.postsData}/>
         </>
     )
 }

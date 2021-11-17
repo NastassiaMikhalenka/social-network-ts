@@ -1,6 +1,5 @@
 import React from "react";
 import classes from "../dialogs.module.css"
-// import {NavLink} from "react-router-dom";
 
 type PropsType = {
     id: number

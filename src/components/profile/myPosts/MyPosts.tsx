@@ -6,7 +6,6 @@ import Paperclip from "../../../assets/paperclip.png"
 import Group from "../../../assets/Group.png"
 import Image from "../../../assets/image.png"
 import {PostsDataType} from "../../../redux/state";
-// import {PostsDataType} from "../../../index";
 // import PostAvatar from "../../../assets/PhotoGirl.png"
 
 type PropsType = {
