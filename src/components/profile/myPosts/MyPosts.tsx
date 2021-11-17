@@ -5,7 +5,7 @@ import AddBtn from "../../../assets/add.png"
 import Paperclip from "../../../assets/paperclip.png"
 import Group from "../../../assets/Group.png"
 import Image from "../../../assets/image.png"
-import PostAvatar from "../../../assets/PhotoGirl.png"
+// import PostAvatar from "../../../assets/PhotoGirl.png"
 
 export type ButtonType = {
     bgImg: string
@@ -17,6 +17,11 @@ export const Button = (props: ButtonType) => {
 }
 
 const MyPosts = () => {
+    let postsData = [
+        {id: 1, name: "Helen", message: "Hello?", likeCount: 7},
+        {id: 2, name: "Helen", message: "What did the Dursleys care if Harry lost his place on the House Quidditch team because he hadn’t practiced all summer?", likeCount: null}
+    ]
+
     return (
         <>
             <div className={classes.wrapper}>
@@ -28,8 +33,8 @@ const MyPosts = () => {
                     <Button bgImg={Image} title={'#'}/>
                 </div>
             </div>
-            <Post name ={"Helen"} avatar={PostAvatar} message={"What did the Dursleys care if Harry lost his place on the House Quidditch team because he hadn’t practiced all summer? ."} likeCount={null}/>
-            <Post name ={"Helen"} avatar={PostAvatar} message={"Hello?"} likeCount={7}/>
+            <Post id={postsData[0].id} name={postsData[0].name} message={postsData[0].message} likeCount={postsData[0].likeCount}/>
+            <Post id={postsData[1].id} name={postsData[1].name} message={postsData[1].message} likeCount={postsData[1].likeCount}/>
 
         </>
     )

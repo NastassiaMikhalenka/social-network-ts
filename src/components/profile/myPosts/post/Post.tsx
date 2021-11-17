@@ -2,8 +2,9 @@ import React from "react";
 import classes from "./post.module.css"
 
 type PostPropsType = {
-    name: string
-    avatar: string
+    id: number
+    name: string | undefined
+    avatar?: string
     message: string
     likeCount: null | number
 };
@@ -12,7 +13,7 @@ const Post = (props: PostPropsType) => {
     return (
         <div className={classes.postWrapper}>
             <div className={classes.postAva}>
-                <img src={props.avatar} alt='#'/>
+                {/*<img src={props.avatar} alt='#'/>*/}
                 <p className={classes.name}>{props.name}</p>
             </div >
             <div className={classes.message}>
