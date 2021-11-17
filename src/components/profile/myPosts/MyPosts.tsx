@@ -13,7 +13,7 @@ type PropsType = {
     postsData: Array<PostsDataType>
 }
 
-const MyPosts = (props: PropsType) => {
+const MyPosts = (props: PropsType) => { // принимаем в пропсах postsData и сделали типизацию как PropsType, переходим на уроверь ниже в Post
     let postsElements =
         props.postsData.map(post => <Post
             key={post.id}

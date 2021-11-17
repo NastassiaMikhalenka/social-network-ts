@@ -47,7 +47,7 @@ import state from './redux/state';
 ReactDOM.render(
   <React.StrictMode>
       <BrowserRouter>
-    <App state={state}
+    <App state={state} // state передаем ниже в App
         // postsData={postsData}
         // dialogsData={dialogsData}
         // messagesData={messagesData}

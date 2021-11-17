@@ -11,7 +11,7 @@ type PropsType = {
     postsData: Array<PostsDataType>
 }
 
-const Profile = (props: PropsType) => {
+const Profile = (props: PropsType) => { // принимаем в  пропсах postsData и сделали типизацию как PropsType, переходим на уроверь ниже в MyPosts
     return (
         <>
             <ProfileInfo

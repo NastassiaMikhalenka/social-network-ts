@@ -10,7 +10,7 @@ type PropsType = {
     messagesData: Array<MessageItemType>
 }
 
-const Dialogs = (props: PropsType) => {
+const Dialogs = (props: PropsType) => { // приняли в пропсах messagesData || dialogsData и сделали типизацию как PropsType
     let messagesElements = props.messagesData.map(message => <Message
         key={message.id}
         message={message.message}

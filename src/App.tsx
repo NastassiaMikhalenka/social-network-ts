@@ -19,7 +19,7 @@ type PropsType = {
     state: StateType
 }
 
-const App = (props: PropsType) => {
+const App = (props: PropsType) => { // приняли в пропсах State и сделали типизацию как PropsType, переходим на уроверь ниже в profile или dialogs
     return (
         <div className='app-wrapper'>
             <Header />
