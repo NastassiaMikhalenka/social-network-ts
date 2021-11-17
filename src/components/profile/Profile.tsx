@@ -4,7 +4,8 @@ import MyPosts from "./myPosts/MyPosts";
 import ProfileInfo from "./profileInfo/ProfileInfo";
 import HeaderProfile from "../../assets/headerPhoto.png";
 import Avatar from "../../assets/user.png";
-import {PostsDataType} from "../../index";
+import {PostsDataType} from "../../redux/state";
+// import {PostsDataType} from "../../index";
 
 type PropsType = {
     postsData: Array<PostsDataType>
