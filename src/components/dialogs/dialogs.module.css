@@ -9,8 +9,15 @@
 }
 
 .active {
-    color: #0077B5;
+    color: black;
 }
+
+/*a:hover{*/
+/*    color: #0077B5;*/
+/*}*/
+/*.active:hover {*/
+/*    color: #0077B5;*/
+/*}*/
 
 .dialog{
 

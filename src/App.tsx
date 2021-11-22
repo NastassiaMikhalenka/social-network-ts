@@ -9,6 +9,7 @@ import News from "./components/news/News";
 import Music from "./components/music/Music";
 import Settings from "./components/settings/Settings";
 import {StateType} from "./redux/state";
+// import Sitebar from "./components/sitebar/Sitebar";
 
 type PropsType = {
     state: StateType
@@ -18,7 +19,8 @@ const App = (props: PropsType) => { // приняли в пропсах State и
     return (
         <div className='app-wrapper'>
             <Header />
-            <Navbar />
+            <Navbar state={props.state.sitebar}/>
+            {/*<Sitebar state={props.state.sitebar}/>*/}
             <div className='app-wrapper-content'>
                 <Routes>
                     <Route path='/profile' element={<Profile

@@ -24,9 +24,14 @@ export type MessagesPageType = {
     messagesData: Array<MessageItemType>
 }
 
+export type sitebarType = {
+    dialogsData: Array<DialogItemType>
+}
+
 export type StateType = {
     profilePage: ProfilePageType
     messagesPage: MessagesPageType
+    sitebar: sitebarType
 }
 
 let state: StateType = {
@@ -48,6 +53,15 @@ let state: StateType = {
             {id: 1, message: "Hi"},
             {id: 2, message: "How is your"},
             {id: 3, message: "Yuu"}
+        ],
+    },
+    sitebar: {
+        dialogsData:[
+            {id: 1, name: "Andrey"},
+            {id: 2, name: "Masha"},
+            {id: 3, name: "Sasha"},
+            {id: 4, name: "Timur"},
+            {id: 5, name: "Valera"}
         ]
     }
 }
