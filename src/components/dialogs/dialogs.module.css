@@ -8,6 +8,10 @@
     padding: 10px;
 }
 
+.active {
+    color: #0077B5;
+}
+
 .dialog{
 
 }

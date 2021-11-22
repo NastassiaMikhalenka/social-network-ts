@@ -10,7 +10,8 @@ type PropsType = {
 const DialogItem = (props: PropsType) => {
     return (
         <div className={classes.dialog}>
-            <NavLink to={`/dialogs/${props.id}`} key={props.id}>
+            <NavLink to={`/dialogs/${props.id}`} key={props.id}
+                     className={(PropsType) => PropsType.isActive ? classes.active : ''}>
                 {props.name}
             </NavLink>
         </div>

@@ -29,7 +29,7 @@ export type StateType = {
     messagesPage: MessagesPageType
 }
 
-let state = {
+let state: StateType = {
     profilePage: {
         postsData: [
             {id: 1, name: "Helen", message: "Hello?", likeCount: 7},
