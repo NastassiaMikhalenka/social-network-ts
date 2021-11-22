@@ -5,30 +5,17 @@ import classes from "./navbar.module.css"
 import {sitebarType, StateType} from "../../redux/state";
 import DialogItem from "../dialogs/DialogItem/DialogItem";
 
-type NavNarLinkType = {
-    linkTo: string
-    linkName: string
-}
-
-const NavBarLink = (props: NavNarLinkType) => {
-    return (
-    <div className={classes.item}>
-        <NavLink to={props.linkTo} className={(NavNarLinkType) => NavNarLinkType.isActive ? classes.active : ''}
-        >{props.linkName}</NavLink>
-    </div>
-    )
-}
 type PropsType = {
     state: sitebarType
 }
 
-
 const Navbar = (props:PropsType ) => {
-    let dialogsElements = props.state.dialogsData.slice(0, 3).map(dialog => <DialogItem
+    let sitebarElements = props.state.dialogsData.slice(0, 3).map(dialog => <DialogItem
         key={dialog.id}
         name={dialog.name}
         id={dialog.id}
     />)
+
     return (
         <nav className={classes.nav}>
             <NavBarLink linkTo={"/profile"} linkName={"Profile"} />
@@ -39,7 +26,7 @@ const Navbar = (props:PropsType ) => {
             <div>
                 <h2>SiteBar</h2>
                 <div>
-                    {dialogsElements}
+                    {sitebarElements}
                 </div>
             </div>
         </nav>
@@ -47,3 +34,18 @@ const Navbar = (props:PropsType ) => {
 }
 
 export default Navbar;
+
+
+type NavNarLinkType = {
+    linkTo: string
+    linkName: string
+}
+
+const NavBarLink = (props: NavNarLinkType) => {
+    return (
+        <div className={classes.item}>
+            <NavLink to={props.linkTo} className={(NavNarLinkType) => NavNarLinkType.isActive ? classes.active : ''}
+            >{props.linkName}</NavLink>
+        </div>
+    )
+}
