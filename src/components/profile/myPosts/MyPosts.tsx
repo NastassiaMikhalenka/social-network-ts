@@ -21,14 +21,12 @@ const MyPosts = (props: PropsType) => { // принимаем в пропсах 
             name={post.name}
             message={post.message}
             likeCount={post.likeCount}/>)
-
     let newPostElement: RefObject<HTMLTextAreaElement> = React.createRef();
 
     const addPost = () => {
         let text = newPostElement.current?.value
         alert(text)
     }
-
     return (
         <>
             <div className={classes.wrapper}>
