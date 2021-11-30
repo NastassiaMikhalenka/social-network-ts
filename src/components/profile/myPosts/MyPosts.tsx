@@ -10,7 +10,7 @@ import {PostsDataType} from "../../../redux/state";
 
 type PropsType = {
     postsData: Array<PostsDataType>
-
+    addPost: (postMessage: string) => void
 }
 
 const MyPosts = (props: PropsType) => { // принимаем в пропсах postsData и сделали типизацию как PropsType, переходим на уроверь ниже в Post
@@ -18,14 +18,15 @@ const MyPosts = (props: PropsType) => { // принимаем в пропсах 
         props.postsData.map(post => <Post
             key={post.id}
             id={post.id}
-            name={post.name}
             message={post.message}
             likeCount={post.likeCount}/>)
+
     let newPostElement: RefObject<HTMLTextAreaElement> = React.createRef();
 
     const addPost = () => {
-        let text = newPostElement.current?.value
-        alert(text)
+        let text: any = newPostElement.current?.value
+        debugger
+        props.addPost(text)
     }
     return (
         <>

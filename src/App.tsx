@@ -13,6 +13,7 @@ import {StateType} from "./redux/state";
 
 type PropsType = {
     state: StateType
+    addPost: (postMessage: string) => void
 }
 
 const App = (props: PropsType) => { // приняли в пропсах State и сделали типизацию как PropsType, переходим на уроверь ниже в profile или dialogs
@@ -24,7 +25,8 @@ const App = (props: PropsType) => { // приняли в пропсах State и
             <div className='app-wrapper-content'>
                 <Routes>
                     <Route path='/profile' element={<Profile
-                        state={props.state.profilePage} />} />
+                        state={props.state.profilePage}
+                        addPost={props.addPost}/>} />
                     <Route path="/dialogs/*" element={<Dialogs
                         state={props.state.messagesPage} />} />
                     <Route path="/news" element={<News />} />

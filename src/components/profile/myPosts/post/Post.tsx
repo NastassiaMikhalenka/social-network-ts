@@ -3,7 +3,6 @@ import classes from "./post.module.css"
 
 type PropsType = {
     id: number
-    name: string
     message: string
     likeCount: number
 };
@@ -13,7 +12,7 @@ const Post = (props: PropsType) => {
         <div className={classes.postWrapper}>
             <div className={classes.postAva}>
                 {/*<img src={props.avatar} alt='#'/>*/}
-                <p className={classes.name}>{props.name}</p>
+                {/*<p className={classes.name}>{props.name}</p>*/}
             </div >
             <div className={classes.message}>
             {props.message}

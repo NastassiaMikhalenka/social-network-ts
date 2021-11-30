@@ -5,12 +5,15 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from "react-router-dom";
 import state from './redux/state';
+import {addPost} from './redux/state';
 
+// addPost('blabla')
 
 ReactDOM.render(
   <React.StrictMode>
       <BrowserRouter>
     <App state={state}// state передаем ниже в App
+         addPost={addPost}
         // postsData={postsData}
         // dialogsData={dialogsData}
         // messagesData={messagesData}

@@ -1,6 +1,5 @@
 export type PostsDataType = {
     id: number
-    name: string
     message: string
     likeCount: number
 }
@@ -37,8 +36,8 @@ export type StateType = {
 let state: StateType = {
     profilePage: {
         postsData: [
-            {id: 1, name: "Helen", message: "Hello?", likeCount: 7},
-            {id: 2, name: "Helen", message: "What did the Dursleys care if Harry lost his place on the House Quidditch team because he hadn’t practiced all summer?", likeCount: 8}
+            {id: 1, message: "Hello?", likeCount: 7},
+            {id: 2, message: "What did the Dursleys care if Harry lost his place on the House Quidditch team because he hadn’t practiced all summer?", likeCount: 8}
         ]
     },
     messagesPage: {
@@ -64,6 +63,17 @@ let state: StateType = {
             {id: 5, name: "Valera"}
         ]
     }
+}
+
+
+export let addPost = (postMessage: string) => {
+    debugger
+    let newPost: PostsDataType = {
+        id: 3,
+        message: postMessage,
+        likeCount: 0
+    }
+    state.profilePage.postsData.push(newPost)
 }
 
 export default state

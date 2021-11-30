@@ -8,7 +8,10 @@ type PropsType = {
 
 const Message = (props: PropsType) => {
      return (
+         <div>
          <div className={classes.message}>{props.message}</div>
+
+         </div>
      )
 }
 
