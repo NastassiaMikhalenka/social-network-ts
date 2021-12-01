@@ -25,7 +25,7 @@ const MyPosts = (props: PropsType) => { // принимаем в пропсах 
 
     const addPost = () => {
         let text: any = newPostElement.current?.value
-        debugger
+        // debugger
         props.addPost(text)
     }
     return (
