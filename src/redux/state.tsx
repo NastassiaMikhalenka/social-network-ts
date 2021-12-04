@@ -18,6 +18,7 @@ export type MessageItemType = {
 
 export type ProfilePageType = {
     postsData: Array<PostsDataType>
+    newPostText: string
 }
 
 export type MessagesPageType = {
@@ -40,7 +41,8 @@ let state: StateType = {
         postsData: [
             {id: 1, message: "Hello?", likeCount: 7},
             {id: 2, message: "What did the Dursleys care if Harry lost his place on the House Quidditch team because he hadn’t practiced all summer?", likeCount: 8}
-        ]
+        ],
+        newPostText: "",
     },
     messagesPage: {
         dialogsData: [
@@ -68,14 +70,21 @@ let state: StateType = {
 }
 
 
-export let addPost = (postMessage: string) => {
+export let addPost = () => {
     debugger
     let newPost: PostsDataType = {
         id: 3,
-        message: postMessage,
+        message: state.profilePage.newPostText,
         likeCount: 0
     }
     state.profilePage.postsData.push(newPost)
+    state.profilePage.newPostText = ''
+    rerenderEntireTree(state)
+}
+
+export let updatePostText = (newText: string) => {
+
+    state.profilePage.newPostText = newText
     rerenderEntireTree(state)
 }
 

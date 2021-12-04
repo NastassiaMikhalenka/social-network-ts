@@ -9,8 +9,11 @@ import {PostsDataType} from "../../../redux/state";
 // import PostAvatar from "../../../assets/PhotoGirl.png"
 
 type PropsType = {
+    newPostText: string
     postsData: Array<PostsDataType>
-    addPost: (postMessage: string) => void
+    addPost: () => void
+    updatePostText: (newText: string) => void
+
 }
 
 const MyPosts = (props: PropsType) => { // принимаем в пропсах postsData и сделали типизацию как PropsType, переходим на уроверь ниже в Post
@@ -24,14 +27,24 @@ const MyPosts = (props: PropsType) => { // принимаем в пропсах 
     let newPostElement: RefObject<HTMLTextAreaElement> = React.createRef();
 
     const addPost = () => {
-        let text: any = newPostElement.current?.value
-        // debugger
-        props.addPost(text)
+        // let text: any = newPostElement.current?.value
+        // // debugger
+        props.addPost()
+        // props.updatePostText('')
     }
+    const onPostChange = () => {
+        let text: any = newPostElement.current?.value
+        props.updatePostText(text)
+    }
+
     return (
         <>
             <div className={classes.wrapper}>
-                <textarea ref={newPostElement} className={classes.postTextarea} placeholder={"Type your post"} rows={3}/>
+                <textarea ref={newPostElement}
+                          value={props.newPostText}
+                          onChange={onPostChange}
+                          className={classes.postTextarea}
+                          placeholder={"Type your post"} rows={3}/>
                 <div className={classes.blockBtns}>
                     <button onClick={addPost} className={classes.addBtn}><img src={AddBtn} alt="#"/></button>
                     {/*<Button bgImg={AddBtn} title={'#'}/>*/}

@@ -8,7 +8,8 @@ import {ProfilePageType} from "../../redux/state";
 
 type PropsType = {
     state: ProfilePageType
-    addPost: (postMessage: string) => void
+    addPost: () => void
+    updatePostText: (newText: string) => void
 }
 
 const Profile = (props: PropsType) => { // принимаем в  пропсах postsData и сделали типизацию как PropsType, переходим на уроверь ниже в MyPosts
@@ -21,7 +22,10 @@ const Profile = (props: PropsType) => { // принимаем в  пропсах
                 location={"Saint Petersburg, Russian Federation"}
                 description={"Freelance UX/UI designer, 80+ projects in web design, mobile apps  (iOS & android) and creative projects. Open to offers."}
             />
-            <MyPosts postsData={props.state.postsData} addPost={props.addPost} />
+            <MyPosts postsData={props.state.postsData}
+                     newPostText={props.state.newPostText}
+                     addPost={props.addPost}
+                     updatePostText={props.updatePostText}/>
         </>
     )
 }
