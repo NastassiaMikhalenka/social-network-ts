@@ -33,8 +33,10 @@ const MyPosts = (props: PropsType) => { // принимаем в пропсах 
         // props.updatePostText('')
     }
     const onPostChange = () => {
-        let text: any = newPostElement.current?.value
-        props.updatePostText(text)
+        let text = newPostElement.current?.value
+        if(text) {
+            props.updatePostText(text)
+        }
     }
 
     return (

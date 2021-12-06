@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from "react-router-dom";
 
-import {addPost, StateType, updatePostText} from './redux/state';
+import {addMessage, addPost, StateType, updateMessageText, updatePostText} from './redux/state';
 
 // addPost('blabla')
 
@@ -16,6 +16,8 @@ export let rerenderEntireTree = (state: StateType) => {
                 <App state={state}// state передаем ниже в App
                      addPost={addPost}
                      updatePostText={updatePostText}
+                     addMessage={addMessage}
+                     updateMessageText={updateMessageText}
                     // postsData={postsData}
                     // dialogsData={dialogsData}
                     // messagesData={messagesData}

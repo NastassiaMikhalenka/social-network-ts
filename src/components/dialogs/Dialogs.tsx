@@ -5,7 +5,10 @@ import DialogItem from "./DialogItem/DialogItem";
 import { MessagesPageType} from "../../redux/state";
 
 type PropsType = {
+    // newMessageText: string
     state: MessagesPageType
+    addMessage: () => void
+    updateMessageText: (newMessage: string) => void
 }
 
 const Dialogs = (props: PropsType) => { // приняли в пропсах messagesData || dialogsData и сделали типизацию как PropsType
@@ -24,8 +27,16 @@ const Dialogs = (props: PropsType) => { // приняли в пропсах mess
     let newMessageElement: RefObject<HTMLTextAreaElement> = React.createRef();
 
     const sendMessage = () => {
+        props.addMessage()
+        // let text = newMessageElement.current?.value
+        // alert(text)
+    }
+
+    const onMessageChange = () => {
         let text = newMessageElement.current?.value
-        alert(text)
+        if(text) {
+            props.updateMessageText(text)
+        }
     }
 
     return (
@@ -37,7 +48,10 @@ const Dialogs = (props: PropsType) => { // приняли в пропсах mess
             <div className={classes.messages}>
                 {messagesElements}
                 <div>
-                    <textarea ref={newMessageElement}></textarea>
+                    <textarea ref={newMessageElement}
+                              value={props.state.newMessage}
+                              onChange={onMessageChange}
+                    />
                     <button onClick={sendMessage}>Send</button>
                 </div>
             </div>

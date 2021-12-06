@@ -24,6 +24,7 @@ export type ProfilePageType = {
 export type MessagesPageType = {
     dialogsData: Array<DialogItemType>
     messagesData: Array<MessageItemType>
+    newMessage: string
 }
 
 export type sitebarType = {
@@ -57,6 +58,7 @@ let state: StateType = {
             {id: 2, message: "How is your"},
             {id: 3, message: "Yuu"}
         ],
+        newMessage: "",
     },
     sitebar: {
         dialogsData:[
@@ -83,8 +85,22 @@ export let addPost = () => {
 }
 
 export let updatePostText = (newText: string) => {
-
     state.profilePage.newPostText = newText
+    rerenderEntireTree(state)
+}
+
+export let addMessage = () => {
+    let newMessage: MessageItemType = {
+        id: 4,
+        message: state.messagesPage.newMessage
+    }
+    state.messagesPage.messagesData.push(newMessage)
+    state.messagesPage.newMessage = ''
+    rerenderEntireTree(state)
+}
+
+export let updateMessageText = (newMessage: string) => {
+    state.messagesPage.newMessage = newMessage
     rerenderEntireTree(state)
 }
 

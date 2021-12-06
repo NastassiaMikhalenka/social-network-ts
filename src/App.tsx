@@ -8,13 +8,15 @@ import {Route, Routes} from "react-router-dom";
 import News from "./components/news/News";
 import Music from "./components/music/Music";
 import Settings from "./components/settings/Settings";
-import {StateType, updatePostText} from "./redux/state";
+import {addMessage, StateType, updatePostText} from "./redux/state";
 // import Sitebar from "./components/sitebar/Sitebar";
 
 type PropsType = {
     state: StateType
     addPost: () => void
     updatePostText: (newText: string) => void
+    addMessage: () => void
+    updateMessageText: (newMessage: string) => void
 }
 
 const App = (props: PropsType) => { // приняли в пропсах State и сделали типизацию как PropsType, переходим на уроверь ниже в profile или dialogs
@@ -30,7 +32,9 @@ const App = (props: PropsType) => { // приняли в пропсах State и
                         addPost={props.addPost}
                         updatePostText={props.updatePostText}/>}/>
                     <Route path="/dialogs/*" element={<Dialogs
-                        state={props.state.messagesPage} />} />
+                        state={props.state.messagesPage}
+                        addMessage={props.addMessage}
+                        updateMessageText={props.updateMessageText}/>} />
                     <Route path="/news" element={<News />} />
                     <Route path="/music" element={<Music />} />
                     <Route path="/settings" element={<Settings />} />
