@@ -1,5 +1,7 @@
-import {rerenderEntireTree} from "../render";
-
+export type rerenderEntireTreeType = (state: StateType) => void
+let rerenderEntireTree = (state: StateType) => {
+    console.log('State changed')
+}
 export type PostsDataType = {
     id: number
     message: string
@@ -72,8 +74,8 @@ let state: StateType = {
 }
 
 
-export let addPost = () => {
-    debugger
+export const addPost = () => {
+    // debugger
     let newPost: PostsDataType = {
         id: 3,
         message: state.profilePage.newPostText,
@@ -84,12 +86,12 @@ export let addPost = () => {
     rerenderEntireTree(state)
 }
 
-export let updatePostText = (newText: string) => {
+export const updatePostText = (newText: string) => {
     state.profilePage.newPostText = newText
     rerenderEntireTree(state)
 }
 
-export let addMessage = () => {
+export const addMessage = () => {
     let newMessage: MessageItemType = {
         id: 4,
         message: state.messagesPage.newMessage
@@ -99,9 +101,13 @@ export let addMessage = () => {
     rerenderEntireTree(state)
 }
 
-export let updateMessageText = (newMessage: string) => {
+export const updateMessageText = (newMessage: string) => {
     state.messagesPage.newMessage = newMessage
-    rerenderEntireTree(state)
+    rerenderEntireTree(state) // был state
+}
+
+export const subscribe = (observer: () => void) => {
+    rerenderEntireTree = observer // паттерн
 }
 
 export default state
