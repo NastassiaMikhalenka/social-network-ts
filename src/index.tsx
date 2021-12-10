@@ -4,30 +4,21 @@ import './index.css';
 import App from './App';
 // import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from "react-router-dom";
+import {StateType, store} from './redux/state';
 
-import state, {
-    addMessage,
-    addPost, rerenderEntireTreeType,
-    StateType,
-    subscribe,
-    updateMessageText,
-    updatePostText
-} from './redux/state';
 
-// addPost('blabla')
 
-let rerenderEntireTree = () => {
+let rerenderEntireTree = (_state: StateType) => {
     ReactDOM.render(
         <React.StrictMode>
             <BrowserRouter>
-                <App state={state}// state передаем ниже в App
-                     addPost={addPost}
-                     updatePostText={updatePostText}
-                     addMessage={addMessage}
-                     updateMessageText={updateMessageText}
-                    // postsData={postsData}
-                    // dialogsData={dialogsData}
-                    // messagesData={messagesData}
+                <App
+                    store={store}
+                    // state={store.getState()}// state передаем ниже в App
+                    //  addPost={store.addPost.bind(store)}
+                    //  updatePostText={store.updatePostText.bind(store)}
+                    //  addMessage={store.addMessage.bind(store)}
+                    //  updateMessageText={store.updateMessageText.bind(store)}
                 />
             </BrowserRouter>
         </React.StrictMode>,
@@ -35,6 +26,6 @@ let rerenderEntireTree = () => {
     );
 }
 
-rerenderEntireTree()
+rerenderEntireTree(store._state)
 // type subscribeType = (rerenderEntireTree: () => subscribe) => void
-subscribe(rerenderEntireTree)
+store.subscribe(rerenderEntireTree)

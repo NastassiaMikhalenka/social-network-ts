@@ -8,33 +8,33 @@ import {Route, Routes} from "react-router-dom";
 import News from "./components/news/News";
 import Music from "./components/music/Music";
 import Settings from "./components/settings/Settings";
-import {addMessage, StateType, updatePostText} from "./redux/state";
+import {StateType, store, StoreType} from "./redux/state";
+// import {addMessage, StateType, store, StoreType, updatePostText} from "./redux/state";
 // import Sitebar from "./components/sitebar/Sitebar";
 
 type PropsType = {
-    state: StateType
-    addPost: () => void
-    updatePostText: (newText: string) => void
-    addMessage: () => void
-    updateMessageText: (newMessage: string) => void
+    store: StoreType
 }
 
 const App = (props: PropsType) => { // приняли в пропсах State и сделали типизацию как PropsType, переходим на уроверь ниже в profile или dialogs
+    const state = store.getState()
     return (
         <div className='app-wrapper'>
             <Header />
-            <Navbar state={props.state.sitebar}/>
+            <Navbar state={state.sitebar}/>
             {/*<Sitebar state={props.state.sitebar}/>*/}
             <div className='app-wrapper-content'>
                 <Routes>
                     <Route path='/profile' element={<Profile
-                        state={props.state.profilePage}
-                        addPost={props.addPost}
-                        updatePostText={props.updatePostText}/>}/>
+                        state={state.profilePage}
+                        addPost={store.addPost.bind(store)}
+                        updatePostText={store.updatePostText.bind(store)}
+                    />}/>
                     <Route path="/dialogs/*" element={<Dialogs
-                        state={props.state.messagesPage}
-                        addMessage={props.addMessage}
-                        updateMessageText={props.updateMessageText}/>} />
+                        state={state.messagesPage}
+                        addMessage={store.addMessage.bind(store)}
+                        updateMessageText={store.updateMessageText.bind(store)}
+                    />} />
                     <Route path="/news" element={<News />} />
                     <Route path="/music" element={<Music />} />
                     <Route path="/settings" element={<Settings />} />

@@ -1,7 +1,3 @@
-export type rerenderEntireTreeType = (state: StateType) => void
-let rerenderEntireTree = (state: StateType) => {
-    console.log('State changed')
-}
 export type PostsDataType = {
     id: number
     message: string
@@ -39,7 +35,20 @@ export type StateType = {
     sitebar: sitebarType
 }
 
-let state: StateType = {
+export type StoreType = {
+    _state: StateType
+    getState: () => StateType
+    _callSubscribe: (state: StateType) => void
+    addPost: () => void
+    updatePostText: (newText: string) => void
+    addMessage: () => void
+    updateMessageText: (newMessage: string) => void
+    subscribe: (observer: (state: StateType) => void) => void
+}
+// export type rerenderEntireTreeType = (state: StateType) => void
+
+export const store: StoreType = {
+    _state: {
     profilePage: {
         postsData: [
             {id: 1, message: "Hello?", likeCount: 7},
@@ -71,43 +80,85 @@ let state: StateType = {
             {id: 5, name: "Valera"}
         ]
     }
+},
+    getState() {
+        return this._state
+    },
+    _callSubscribe(state: StateType){
+        console.log('State changed')
+    },
+    addPost(){
+        // debugger
+        let newPost: PostsDataType = {
+            id: 3,
+            message: this._state.profilePage.newPostText,
+            likeCount: 0
+        }
+        this._state.profilePage.postsData.push(newPost)
+        this._state.profilePage.newPostText = ''
+        this._callSubscribe(this._state)
+    },
+    updatePostText(newText: string){
+        this._state.profilePage.newPostText = newText
+        this._callSubscribe(this._state)
+    },
+    addMessage(){
+        let newMessage: MessageItemType = {
+            id: 4,
+            message: this._state.messagesPage.newMessage
+        }
+        this._state.messagesPage.messagesData.push(newMessage)
+        this._state.messagesPage.newMessage = ''
+        this._callSubscribe(this._state)
+    },
+    updateMessageText(newMessage: string){
+        this._state.messagesPage.newMessage = newMessage
+        this._callSubscribe(this._state) // был state
+    },
+    subscribe(callback){
+        this._callSubscribe = callback // паттерн
+    },
 }
 
+// export default store
 
-export const addPost = () => {
-    // debugger
-    let newPost: PostsDataType = {
-        id: 3,
-        message: state.profilePage.newPostText,
-        likeCount: 0
-    }
-    state.profilePage.postsData.push(newPost)
-    state.profilePage.newPostText = ''
-    rerenderEntireTree(state)
-}
+// let rerenderEntireTree = (state: StateType) => {
+//     console.log('State changed')
+// }
 
-export const updatePostText = (newText: string) => {
-    state.profilePage.newPostText = newText
-    rerenderEntireTree(state)
-}
+// export const addPost = () => {
+//     // debugger
+//     let newPost: PostsDataType = {
+//         id: 3,
+//         message: state.profilePage.newPostText,
+//         likeCount: 0
+//     }
+//     state.profilePage.postsData.push(newPost)
+//     state.profilePage.newPostText = ''
+//     rerenderEntireTree(state)
+// }
 
-export const addMessage = () => {
-    let newMessage: MessageItemType = {
-        id: 4,
-        message: state.messagesPage.newMessage
-    }
-    state.messagesPage.messagesData.push(newMessage)
-    state.messagesPage.newMessage = ''
-    rerenderEntireTree(state)
-}
+// export const updatePostText = (newText: string) => {
+//     state.profilePage.newPostText = newText
+//     rerenderEntireTree(state)
+// }
 
-export const updateMessageText = (newMessage: string) => {
-    state.messagesPage.newMessage = newMessage
-    rerenderEntireTree(state) // был state
-}
-
-export const subscribe = (observer: () => void) => {
-    rerenderEntireTree = observer // паттерн
-}
-
-export default state
+// export const addMessage = () => {
+//     let newMessage: MessageItemType = {
+//         id: 4,
+//         message: state.messagesPage.newMessage
+//     }
+//     state.messagesPage.messagesData.push(newMessage)
+//     state.messagesPage.newMessage = ''
+//     rerenderEntireTree(state)
+// }
+//
+// export const updateMessageText = (newMessage: string) => {
+//     state.messagesPage.newMessage = newMessage
+//     rerenderEntireTree(state) // был state
+// }
+//
+// export const subscribe = (observer: () => void) => {
+//     rerenderEntireTree = observer // паттерн
+// }
+// export default state
