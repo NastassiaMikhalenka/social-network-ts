@@ -2,13 +2,13 @@ import React, {RefObject} from "react";
 import classes from "./dialogs.module.css"
 import Message from "./Message/Message";
 import DialogItem from "./DialogItem/DialogItem";
-import { MessagesPageType} from "../../redux/state";
+import {ActionsType, addMessageAC, addPostAC, MessagesPageType, updateNewMessageTextAC} from "../../redux/state";
 
 type PropsType = {
-    // newMessageText: string
     state: MessagesPageType
-    addMessage: () => void
-    updateMessageText: (newMessage: string) => void
+    dispatch: (action: ActionsType) => void
+    // addMessage: () => void
+    // updateMessageText: (newMessage: string) => void
 }
 
 const Dialogs = (props: PropsType) => { // приняли в пропсах messagesData || dialogsData и сделали типизацию как PropsType
@@ -27,16 +27,21 @@ const Dialogs = (props: PropsType) => { // приняли в пропсах mess
     let newMessageElement: RefObject<HTMLTextAreaElement> = React.createRef();
 
     const sendMessage = () => {
-        props.addMessage()
-        // let text = newMessageElement.current?.value
-        // alert(text)
+        props.dispatch(addMessageAC(props.state.newMessage))
+
+        // props.dispatch({type: "ADD_MESSAGE"})
     }
 
     const onMessageChange = () => {
         let text = newMessageElement.current?.value
         if(text) {
-            props.updateMessageText(text)
+            props.dispatch(updateNewMessageTextAC(text))
         }
+
+        // let text = newMessageElement.current?.value
+        // if(text) {
+        //     props.dispatch({type: "UPDATE_NEW_MESSAGE_TEXT", newMessage: text})
+        // }
     }
 
     return (

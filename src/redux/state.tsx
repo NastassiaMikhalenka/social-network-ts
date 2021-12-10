@@ -3,49 +3,54 @@ export type PostsDataType = {
     message: string
     likeCount: number
 }
-
 export type DialogItemType = {
     id: number
     name: string
 }
-
 export type MessageItemType = {
     id: number
     message: string
 }
-
 export type ProfilePageType = {
     postsData: Array<PostsDataType>
     newPostText: string
 }
-
 export type MessagesPageType = {
     dialogsData: Array<DialogItemType>
     messagesData: Array<MessageItemType>
     newMessage: string
 }
-
 export type sitebarType = {
     dialogsData: Array<DialogItemType>
 }
-
 export type StateType = {
     profilePage: ProfilePageType
     messagesPage: MessagesPageType
     sitebar: sitebarType
 }
 
+export type ActionsType =
+    AddPostActionType |
+    UpdateNewPostTextActionType |
+    AddMessageActionType |
+    UpdateNewPostMessageActionType
+
+type AddPostActionType = ReturnType<typeof addPostAC>
+type UpdateNewPostTextActionType = ReturnType<typeof updateNewPostTextAC>
+type AddMessageActionType = ReturnType<typeof addMessageAC>
+type UpdateNewPostMessageActionType = ReturnType<typeof updateNewMessageTextAC>
+
 export type StoreType = {
     _state: StateType
     getState: () => StateType
     _callSubscribe: (state: StateType) => void
-    addPost: () => void
-    updatePostText: (newText: string) => void
-    addMessage: () => void
-    updateMessageText: (newMessage: string) => void
     subscribe: (observer: (state: StateType) => void) => void
+    // addPost: () => void
+    // updatePostText: (newText: string) => void
+    // addMessage: () => void
+    // updateMessageText: (newMessage: string) => void
+    dispatch: (action: ActionsType) => void
 }
-// export type rerenderEntireTreeType = (state: StateType) => void
 
 export const store: StoreType = {
     _state: {
@@ -81,46 +86,103 @@ export const store: StoreType = {
         ]
     }
 },
-    getState() {
-        return this._state
-    },
     _callSubscribe(state: StateType){
         console.log('State changed z gthdsq')
     },
-    addPost(){
-        // debugger
-        let newPost: PostsDataType = {
-            id: 3,
-            message: this._state.profilePage.newPostText,
-            likeCount: 0
-        }
-        this._state.profilePage.postsData.push(newPost)
-        this._state.profilePage.newPostText = ''
-        this._callSubscribe(this._state)
+    getState() {
+        return this._state
     },
-    updatePostText(newText: string){
-        this._state.profilePage.newPostText = newText
-        this._callSubscribe(this._state)
-    },
-    addMessage(){
-        let newMessage: MessageItemType = {
-            id: 4,
-            message: this._state.messagesPage.newMessage
-        }
-        this._state.messagesPage.messagesData.push(newMessage)
-        this._state.messagesPage.newMessage = ''
-        this._callSubscribe(this._state)
-    },
-    updateMessageText(newMessage: string){
-        this._state.messagesPage.newMessage = newMessage
-        this._callSubscribe(this._state) // был state
-    },
+    // addPost(){
+    //     // debugger
+    //     let newPost: PostsDataType = {
+    //         id: 3,
+    //         message: this._state.profilePage.newPostText,
+    //         likeCount: 0
+    //     }
+    //     this._state.profilePage.postsData.push(newPost)
+    //     this._state.profilePage.newPostText = ''
+    //     this._callSubscribe(this._state)
+    // },
+    // updatePostText(newText: string){
+    //     this._state.profilePage.newPostText = newText
+    //     this._callSubscribe(this._state)
+    // },
+    // addMessage(){
+    //     let newMessage: MessageItemType = {
+    //         id: 4,
+    //         message: this._state.messagesPage.newMessage
+    //     }
+    //     this._state.messagesPage.messagesData.push(newMessage)
+    //     this._state.messagesPage.newMessage = ''
+    //     this._callSubscribe(this._state)
+    // },
+    // updateMessageText(newMessage: string){
+    //     this._state.messagesPage.newMessage = newMessage
+    //     this._callSubscribe(this._state) // был state
+    // },
     subscribe(callback){
         this._callSubscribe = callback // паттерн
     },
+    dispatch(action){
+        if(action.type === "ADD_POST"){
+            let newPost: PostsDataType = {
+                id: 3,
+                message: this._state.profilePage.newPostText,
+                likeCount: 0
+            }
+            this._state.profilePage.postsData.push(newPost)
+            this._state.profilePage.newPostText = ''
+            this._callSubscribe(this._state)
+        }
+        else if(action.type === "UPDATE_NEW_POST_TEXT") {
+            this._state.profilePage.newPostText = action.newText
+            this._callSubscribe(this._state)
+        }
+        else if(action.type === "ADD_MESSAGE") {
+            let newMessage: MessageItemType = {
+                id: 4,
+                message: this._state.messagesPage.newMessage
+            }
+            this._state.messagesPage.messagesData.push(newMessage)
+            this._state.messagesPage.newMessage = ''
+            this._callSubscribe(this._state)
+        }
+        else if (action.type === "UPDATE_NEW_MESSAGE_TEXT"){
+            this._state.messagesPage.newMessage = action.newMessage
+            this._callSubscribe(this._state) // был state
+        }
+    }
 }
 
-// export default store
+export const addPostAC = (newPost: string) => { // доп функции
+    return {
+        type: "ADD_POST",
+        postText: newPost
+    } as const
+}
+
+export const updateNewPostTextAC = (newText: string) => {
+    return {
+        type: "UPDATE_NEW_POST_TEXT",
+        newText: newText
+    } as const
+}
+
+export const addMessageAC = (newMessage: string) => {
+    return {
+        type: "ADD_MESSAGE",
+        newMessage: newMessage
+    } as const
+}
+
+export const updateNewMessageTextAC = (newMessage: string) => {
+    return {
+        type: "UPDATE_NEW_MESSAGE_TEXT",
+        newMessage: newMessage
+    } as const
+}
+
+
 
 // let rerenderEntireTree = (state: StateType) => {
 //     console.log('State changed')
@@ -162,3 +224,42 @@ export const store: StoreType = {
 //     rerenderEntireTree = observer // паттерн
 // }
 // export default state
+
+
+
+
+
+
+
+
+
+// switch (action.type) {
+//     case "ADD_POST": {
+//         let newPost: PostsDataType = {
+//             id: 3,
+//             message: this._state.profilePage.newPostText,
+//             likeCount: 0
+//         }
+//         this._state.profilePage.postsData.push(newPost)
+//         this._state.profilePage.newPostText = ''
+//         this._callSubscribe(this._state)
+//     }
+//     case "UPDATE_NEW_POST_TEXT": {
+//         this._state.profilePage.newPostText = action.newText
+//         this._callSubscribe(this._state)
+//     }
+//     case "ADD_MESSAGE": {
+//         let newMessage: MessageItemType = {
+//             id: 4,
+//             message: this._state.messagesPage.newMessage
+//         }
+//         this._state.messagesPage.messagesData.push(newMessage)
+//         this._state.messagesPage.newMessage = ''
+//         this._callSubscribe(this._state)
+//     }
+//     case "UPDATE_NEW_MESSAGE_TEXT": {
+//         this._state.messagesPage.newMessage = action.newMessage
+//         this._callSubscribe(this._state) // был state
+//     }
+//     default: this.getState()
+// }

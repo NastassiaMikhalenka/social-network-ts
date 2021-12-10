@@ -8,12 +8,13 @@ import {Route, Routes} from "react-router-dom";
 import News from "./components/news/News";
 import Music from "./components/music/Music";
 import Settings from "./components/settings/Settings";
-import {StateType, store, StoreType} from "./redux/state";
+import {ActionsType, StateType, store, StoreType} from "./redux/state";
 // import {addMessage, StateType, store, StoreType, updatePostText} from "./redux/state";
 // import Sitebar from "./components/sitebar/Sitebar";
 
 type PropsType = {
     store: StoreType
+    dispatch: (action: ActionsType) => void
 }
 
 const App = (props: PropsType) => { // приняли в пропсах State и сделали типизацию как PropsType, переходим на уроверь ниже в profile или dialogs
@@ -27,13 +28,15 @@ const App = (props: PropsType) => { // приняли в пропсах State и
                 <Routes>
                     <Route path='/profile' element={<Profile
                         state={state.profilePage}
-                        addPost={store.addPost.bind(store)}
-                        updatePostText={store.updatePostText.bind(store)}
+                        dispatch={props.dispatch}
+                        // addPost={store.addPost.bind(store)}
+                        // updatePostText={store.updatePostText.bind(store)}
                     />}/>
                     <Route path="/dialogs/*" element={<Dialogs
                         state={state.messagesPage}
-                        addMessage={store.addMessage.bind(store)}
-                        updateMessageText={store.updateMessageText.bind(store)}
+                        dispatch={props.dispatch}
+                        // addMessage={store.addMessage.bind(store)}
+                        // updateMessageText={store.updateMessageText.bind(store)}
                     />} />
                     <Route path="/news" element={<News />} />
                     <Route path="/music" element={<Music />} />

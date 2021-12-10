@@ -14,6 +14,7 @@ let rerenderEntireTree = (_state: StateType) => {
             <BrowserRouter>
                 <App
                     store={store}
+                    dispatch={store.dispatch.bind(store)}
                     // state={store.getState()}// state передаем ниже в App
                     //  addPost={store.addPost.bind(store)}
                     //  updatePostText={store.updatePostText.bind(store)}

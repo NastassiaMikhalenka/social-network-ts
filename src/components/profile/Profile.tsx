@@ -4,12 +4,13 @@ import MyPosts from "./myPosts/MyPosts";
 import ProfileInfo from "./profileInfo/ProfileInfo";
 import HeaderProfile from "../../assets/headerPhoto.png";
 import Avatar from "../../assets/user.png";
-import {ProfilePageType} from "../../redux/state";
+import {ActionsType, ProfilePageType} from "../../redux/state";
 
 type PropsType = {
     state: ProfilePageType
-    addPost: () => void
-    updatePostText: (newText: string) => void
+    dispatch: (action: ActionsType) => void
+    // addPost: () => void
+    // updatePostText: (newText: string) => void
 }
 
 const Profile = (props: PropsType) => { // принимаем в  пропсах postsData и сделали типизацию как PropsType, переходим на уроверь ниже в MyPosts
@@ -24,8 +25,10 @@ const Profile = (props: PropsType) => { // принимаем в  пропсах
             />
             <MyPosts postsData={props.state.postsData}
                      newPostText={props.state.newPostText}
-                     addPost={props.addPost}
-                     updatePostText={props.updatePostText}/>
+                     dispatch={props.dispatch}
+                     // addPost={props.addPost}
+                     // updatePostText={props.updatePostText}
+            />
         </>
     )
 }

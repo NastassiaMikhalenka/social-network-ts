@@ -5,14 +5,15 @@ import AddBtn from "../../../assets/add.png"
 // import Paperclip from "../../../assets/paperclip.png"
 // import Group from "../../../assets/Group.png"
 // import Image from "../../../assets/image.png"
-import {PostsDataType} from "../../../redux/state";
+import {ActionsType, addPostAC, PostsDataType, updateNewPostTextAC} from "../../../redux/state";
 // import PostAvatar from "../../../assets/PhotoGirl.png"
 
 type PropsType = {
     newPostText: string
     postsData: Array<PostsDataType>
-    addPost: () => void
-    updatePostText: (newText: string) => void
+    dispatch: (action: ActionsType) => void
+    // addPost: () => void
+    // updatePostText: (newText: string) => void
 
 }
 
@@ -27,16 +28,25 @@ const MyPosts = (props: PropsType) => { // принимаем в пропсах 
     let newPostElement: RefObject<HTMLTextAreaElement> = React.createRef();
 
     const addPost = () => {
-        // let text: any = newPostElement.current?.value
-        // // debugger
-        props.addPost()
-        // props.updatePostText('')
+        props.dispatch(addPostAC(props.newPostText))  // с применением доп функций в стейте
+        // props.dispatch({type: "ADD_POST"}) // без применения доп финкций в стейте
+        // props.addPost() // первоначальный вариант
     }
     const onPostChange = () => {
         let text = newPostElement.current?.value
         if(text) {
-            props.updatePostText(text)
+            props.dispatch(updateNewPostTextAC(text)) // с применением доп функций в стейте
         }
+
+        // let text = newPostElement.current?.value // без применения доп финкций в стейте
+        // if(text) {
+        //     props.dispatch({type: "UPDATE_NEW_POST_TEXT", newText: text})
+        // }
+
+        // let text = newPostElement.current?.value // первоначальный вариант
+        // if(text) {
+        //     props.updatePostText(text)
+        // }
     }
 
     return (
