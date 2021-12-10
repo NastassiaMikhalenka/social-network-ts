@@ -85,7 +85,7 @@ export const store: StoreType = {
         return this._state
     },
     _callSubscribe(state: StateType){
-        console.log('State changed')
+        console.log('State changed z gthdsq')
     },
     addPost(){
         // debugger

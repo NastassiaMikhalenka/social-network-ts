@@ -26,6 +26,6 @@ let rerenderEntireTree = (_state: StateType) => {
     );
 }
 
-rerenderEntireTree(store._state)
+rerenderEntireTree(store.getState())
 // type subscribeType = (rerenderEntireTree: () => subscribe) => void
 store.subscribe(rerenderEntireTree)
