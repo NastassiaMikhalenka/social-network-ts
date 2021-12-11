@@ -27,15 +27,15 @@ const Dialogs = (props: PropsType) => { // приняли в пропсах mess
     let newMessageElement: RefObject<HTMLTextAreaElement> = React.createRef();
 
     const sendMessage = () => {
-        props.dispatch(addMessageAC(props.state.newMessage))
+        props.dispatch(addMessageAC())
 
         // props.dispatch({type: "ADD_MESSAGE"})
     }
 
     const onMessageChange = () => {
-        let text = newMessageElement.current?.value
-        if(text) {
-            props.dispatch(updateNewMessageTextAC(text))
+        let newMessage = newMessageElement.current?.value
+        if(newMessage) {
+            props.dispatch(updateNewMessageTextAC(newMessage))
         }
 
         // let text = newMessageElement.current?.value

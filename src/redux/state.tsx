@@ -160,21 +160,17 @@ export const addPostAC = (newPost: string) => { // доп функции
         postText: newPost
     } as const
 }
-
 export const updateNewPostTextAC = (newText: string) => {
     return {
         type: "UPDATE_NEW_POST_TEXT",
         newText: newText
     } as const
 }
-
-export const addMessageAC = (newMessage: string) => {
+export const addMessageAC = () => {
     return {
-        type: "ADD_MESSAGE",
-        newMessage: newMessage
+        type: "ADD_MESSAGE"
     } as const
 }
-
 export const updateNewMessageTextAC = (newMessage: string) => {
     return {
         type: "UPDATE_NEW_MESSAGE_TEXT",
