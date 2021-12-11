@@ -32,6 +32,9 @@ const MyPosts = (props: PropsType) => { // принимаем в пропсах 
         // props.dispatch({type: "ADD_POST"}) // без применения доп финкций в стейте
         // props.addPost() // первоначальный вариант
     }
+
+    // Action Creator - функция, которая возвращает экшен. Объект с типом и данными
+    // ДОП ФУНКЦИЯ!!!
     const onPostChange = () => {
         let text = newPostElement.current?.value
         if(text) {

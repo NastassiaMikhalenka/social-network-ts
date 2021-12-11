@@ -87,7 +87,7 @@ export const store: StoreType = {
     }
 },
     _callSubscribe(state: StateType){
-        console.log('State changed z gthdsq')
+        console.log('State changed')
     },
     getState() {
         return this._state
@@ -153,7 +153,7 @@ export const store: StoreType = {
         }
     }
 }
-
+// Action Creator - функция, которая возвращает экшен. Объект с типом и данными
 export const addPostAC = (newPost: string) => { // доп функции
     return {
         type: "ADD_POST",
