@@ -1,3 +1,7 @@
+import { ActionsTypeForProfile, profileReducer} from "./profile_reducer";
+import { ActionsTypeForMessages, dialogsReducer} from "./dialogs_reducer";
+import {sidebarReducer} from "./sidebar_reducer";
+
 export type PostsDataType = {
     id: number
     message: string
@@ -29,16 +33,18 @@ export type StateType = {
     sitebar: sitebarType
 }
 
-export type ActionsType =
-    AddPostActionType |
-    UpdateNewPostTextActionType |
-    AddMessageActionType |
-    UpdateNewPostMessageActionType
+// export type ActionsType =
+//     AddPostActionType |
+//     UpdateNewPostTextActionType |
+//     AddMessageActionType |
+//     UpdateNewPostMessageActionType
 
-type AddPostActionType = ReturnType<typeof addPostAC>
-type UpdateNewPostTextActionType = ReturnType<typeof updateNewPostTextAC>
-type AddMessageActionType = ReturnType<typeof addMessageAC>
-type UpdateNewPostMessageActionType = ReturnType<typeof updateNewMessageTextAC>
+// type AddPostActionType = ReturnType<typeof addPostAC>
+// type UpdateNewPostTextActionType = ReturnType<typeof updateNewPostTextAC>
+// type AddMessageActionType = ReturnType<typeof addMessageAC>
+// type UpdateNewPostMessageActionType = ReturnType<typeof updateNewMessageTextAC>
+
+export type ActionsType = ActionsTypeForProfile | ActionsTypeForMessages
 
 export type StoreType = {
     _state: StateType
@@ -124,59 +130,64 @@ export const store: StoreType = {
         this._callSubscribe = callback // паттерн
     },
     dispatch(action){
-        if(action.type === "ADD_POST"){
-            let newPost: PostsDataType = {
-                id: 3,
-                message: this._state.profilePage.newPostText,
-                likeCount: 0
-            }
-            this._state.profilePage.postsData.push(newPost)
-            this._state.profilePage.newPostText = ''
-            this._callSubscribe(this._state)
-        }
-        else if(action.type === "UPDATE_NEW_POST_TEXT") {
-            this._state.profilePage.newPostText = action.newText
-            this._callSubscribe(this._state)
-        }
-        else if(action.type === "ADD_MESSAGE") {
-            let newMessage: MessageItemType = {
-                id: 4,
-                message: this._state.messagesPage.newMessage
-            }
-            this._state.messagesPage.messagesData.push(newMessage)
-            this._state.messagesPage.newMessage = ''
-            this._callSubscribe(this._state)
-        }
-        else if (action.type === "UPDATE_NEW_MESSAGE_TEXT"){
-            this._state.messagesPage.newMessage = action.newMessage
-            this._callSubscribe(this._state) // был state
-        }
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.messagesPage = dialogsReducer(this._state.messagesPage, action);
+        this._state.sitebar = sidebarReducer(this._state.sitebar, action);
+
+        this._callSubscribe(this._state)
+        // if(action.type === "ADD_POST"){
+        //     let newPost: PostsDataType = {
+        //         id: 3,
+        //         message: this._state.profilePage.newPostText,
+        //         likeCount: 0
+        //     }
+        //     this._state.profilePage.postsData.push(newPost)
+        //     this._state.profilePage.newPostText = ''
+        //     this._callSubscribe(this._state)
+        // }
+        // else if(action.type === "UPDATE_NEW_POST_TEXT") {
+        //     this._state.profilePage.newPostText = action.newText
+        //     this._callSubscribe(this._state)
+        // }
+        // else if(action.type === "ADD_MESSAGE") {
+        //     let newMessage: MessageItemType = {
+        //         id: 4,
+        //         message: this._state.messagesPage.newMessage
+        //     }
+        //     this._state.messagesPage.messagesData.push(newMessage)
+        //     this._state.messagesPage.newMessage = ''
+        //     this._callSubscribe(this._state)
+        // }
+        // else if (action.type === "UPDATE_NEW_MESSAGE_TEXT"){
+        //     this._state.messagesPage.newMessage = action.newMessage
+        //     this._callSubscribe(this._state) // был state
+        // }
     }
 }
 // Action Creator - функция, которая возвращает экшен. Объект с типом и данными
-export const addPostAC = (newPost: string) => { // доп функции
-    return {
-        type: "ADD_POST",
-        postText: newPost
-    } as const
-}
-export const updateNewPostTextAC = (newText: string) => {
-    return {
-        type: "UPDATE_NEW_POST_TEXT",
-        newText: newText
-    } as const
-}
-export const addMessageAC = () => {
-    return {
-        type: "ADD_MESSAGE"
-    } as const
-}
-export const updateNewMessageTextAC = (newMessage: string) => {
-    return {
-        type: "UPDATE_NEW_MESSAGE_TEXT",
-        newMessage: newMessage
-    } as const
-}
+// export const addPostAC = (newPost: string) => { // доп функции
+//     return {
+//         type: "ADD_POST",
+//         postText: newPost
+//     } as const
+// }
+// export const updateNewPostTextAC = (newText: string) => {
+//     return {
+//         type: "UPDATE_NEW_POST_TEXT",
+//         newText: newText
+//     } as const
+// }
+// export const addMessageAC = () => {
+//     return {
+//         type: "ADD_MESSAGE"
+//     } as const
+// }
+// export const updateNewMessageTextAC = (newMessage: string) => {
+//     return {
+//         type: "UPDATE_NEW_MESSAGE_TEXT",
+//         newMessage: newMessage
+//     } as const
+// }
 
 
 
