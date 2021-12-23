@@ -8,11 +8,12 @@ import {StateType, store} from './redux/state';
 
 
 
-let rerenderEntireTree = (_state: StateType) => {
+let rerenderEntireTree = (state: StateType) => {
     ReactDOM.render(
         <React.StrictMode>
             <BrowserRouter>
                 <App
+                    state={state}
                     store={store}
                     dispatch={store.dispatch.bind(store)}
                     // state={store.getState()}// state передаем ниже в App
@@ -29,4 +30,7 @@ let rerenderEntireTree = (_state: StateType) => {
 
 rerenderEntireTree(store.getState())
 // type subscribeType = (rerenderEntireTree: () => subscribe) => void
-store.subscribe(rerenderEntireTree)
+store.subscribe(() =>{
+    let state = store.getState()
+    rerenderEntireTree(state)
+})

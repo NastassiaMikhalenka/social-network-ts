@@ -8,14 +8,17 @@ import {Route, Routes} from "react-router-dom";
 import News from "./components/news/News";
 import Music from "./components/music/Music";
 import Settings from "./components/settings/Settings";
-import {ActionsType, StateType, store, StoreType} from "./redux/state";
+import {ActionsType, StoreType} from "./redux/state";
+import {store} from "./redux/redux-store"
 // import {addMessage, StateType, store, StoreType, updatePostText} from "./redux/state";
 // import Sitebar from "./components/sitebar/Sitebar";
 
 type PropsType = {
+    state: any
     store: StoreType
     dispatch: (action: ActionsType) => void
 }
+// store === state
 
 const App = (props: PropsType) => { // приняли в пропсах State и сделали типизацию как PropsType, переходим на уроверь ниже в profile или dialogs
     const state = store.getState()
