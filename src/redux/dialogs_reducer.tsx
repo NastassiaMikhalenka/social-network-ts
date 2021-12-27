@@ -4,23 +4,23 @@ const ADD_MESSAGE = "ADD_MESSAGE";
 const UPDATE_NEW_MESSAGE_TEXT = "UPDATE_NEW_MESSAGE_TEXT";
 
 let initialState = {
-        dialogsData: [
-            {id: 1, name: "Andrey"},
-            {id: 2, name: "Masha"},
-            {id: 3, name: "Sasha"},
-            {id: 4, name: "Timur"},
-            {id: 5, name: "Valera"}
-        ],
-        messagesData: [
-            {id: 1, message: "Hi"},
-            {id: 2, message: "How is your"},
-            {id: 3, message: "Yuu"}
-        ],
-        newMessage: "",
-    }
+    dialogsData: [
+        {id: 1, name: "Andrey"},
+        {id: 2, name: "Masha"},
+        {id: 3, name: "Sasha"},
+        {id: 4, name: "Timur"},
+        {id: 5, name: "Valera"}
+    ],
+    messagesData: [
+        {id: 1, message: "Hi"},
+        {id: 2, message: "How is your"},
+        {id: 3, message: "Yuu"}
+    ],
+    newMessage: "",
+}
 
 export const dialogsReducer = (state = initialState, action: ActionsType): MessagesPageType => {
-    switch (action.type){
+    switch (action.type) {
         case ADD_MESSAGE:
             let newMessage: MessageItemType = {
                 id: 4,
@@ -32,7 +32,8 @@ export const dialogsReducer = (state = initialState, action: ActionsType): Messa
         case UPDATE_NEW_MESSAGE_TEXT:
             state.newMessage = action.newMessage;
             return state
-        default: return state;
+        default:
+            return state;
     }
     // if(action.type === ADD_MESSAGE) {
     //     let newMessage: MessageItemType = {

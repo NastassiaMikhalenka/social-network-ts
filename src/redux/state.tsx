@@ -1,5 +1,5 @@
-import { ActionsTypeForProfile, profileReducer} from "./profile_reducer";
-import { ActionsTypeForMessages, dialogsReducer} from "./dialogs_reducer";
+import {ActionsTypeForProfile, profileReducer} from "./profile_reducer";
+import {ActionsTypeForMessages, dialogsReducer} from "./dialogs_reducer";
 import {sidebarReducer} from "./sidebar_reducer";
 
 export type PostsDataType = {
@@ -60,39 +60,43 @@ export type StoreType = {
 
 export const store: StoreType = {
     _state: {
-    profilePage: {
-        postsData: [
-            {id: 1, message: "Hello?", likeCount: 7},
-            {id: 2, message: "What did the Dursleys care if Harry lost his place on the House Quidditch team because he hadn’t practiced all summer?", likeCount: 8}
-        ],
-        newPostText: "",
+        profilePage: {
+            postsData: [
+                {id: 1, message: "Hello?", likeCount: 7},
+                {
+                    id: 2,
+                    message: "What did the Dursleys care if Harry lost his place on the House Quidditch team because he hadn’t practiced all summer?",
+                    likeCount: 8
+                }
+            ],
+            newPostText: "",
+        },
+        messagesPage: {
+            dialogsData: [
+                {id: 1, name: "Andrey"},
+                {id: 2, name: "Masha"},
+                {id: 3, name: "Sasha"},
+                {id: 4, name: "Timur"},
+                {id: 5, name: "Valera"}
+            ],
+            messagesData: [
+                {id: 1, message: "Hi"},
+                {id: 2, message: "How is your"},
+                {id: 3, message: "Yuu"}
+            ],
+            newMessage: "",
+        },
+        sitebar: {
+            dialogsData: [
+                {id: 1, name: "Andrey"},
+                {id: 2, name: "Masha"},
+                {id: 3, name: "Sasha"},
+                {id: 4, name: "Timur"},
+                {id: 5, name: "Valera"}
+            ]
+        }
     },
-    messagesPage: {
-        dialogsData: [
-            {id: 1, name: "Andrey"},
-            {id: 2, name: "Masha"},
-            {id: 3, name: "Sasha"},
-            {id: 4, name: "Timur"},
-            {id: 5, name: "Valera"}
-        ],
-        messagesData: [
-            {id: 1, message: "Hi"},
-            {id: 2, message: "How is your"},
-            {id: 3, message: "Yuu"}
-        ],
-        newMessage: "",
-    },
-    sitebar: {
-        dialogsData:[
-            {id: 1, name: "Andrey"},
-            {id: 2, name: "Masha"},
-            {id: 3, name: "Sasha"},
-            {id: 4, name: "Timur"},
-            {id: 5, name: "Valera"}
-        ]
-    }
-},
-    _callSubscribe(state: StateType){
+    _callSubscribe(state: StateType) {
         console.log('State changed')
     },
     getState() {
@@ -126,10 +130,10 @@ export const store: StoreType = {
     //     this._state.messagesPage.newMessage = newMessage
     //     this._callSubscribe(this._state) // был state
     // },
-    subscribe(callback){
+    subscribe(callback) {
         this._callSubscribe = callback // паттерн
     },
-    dispatch(action){
+    dispatch(action) {
         this._state.profilePage = profileReducer(this._state.profilePage, action);
         this._state.messagesPage = dialogsReducer(this._state.messagesPage, action);
         this._state.sitebar = sidebarReducer(this._state.sitebar, action);
@@ -190,7 +194,6 @@ export const store: StoreType = {
 // }
 
 
-
 // let rerenderEntireTree = (state: StateType) => {
 //     console.log('State changed')
 // }
@@ -231,13 +234,6 @@ export const store: StoreType = {
 //     rerenderEntireTree = observer // паттерн
 // }
 // export default state
-
-
-
-
-
-
-
 
 
 // switch (action.type) {

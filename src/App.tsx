@@ -8,13 +8,13 @@ import {Route, Routes} from "react-router-dom";
 import News from "./components/news/News";
 import Music from "./components/music/Music";
 import Settings from "./components/settings/Settings";
-import {ActionsType, StoreType} from "./redux/state";
-import {store} from "./redux/redux-store"
+import {ActionsType} from "./redux/state";
+import {store, StoreType} from "./redux/redux-store"
 // import {addMessage, StateType, store, StoreType, updatePostText} from "./redux/state";
 // import Sitebar from "./components/sitebar/Sitebar";
 
 type PropsType = {
-    state: any
+    // state: StateType
     store: StoreType
     dispatch: (action: ActionsType) => void
 }
@@ -24,7 +24,7 @@ const App = (props: PropsType) => { // приняли в пропсах State и
     const state = store.getState()
     return (
         <div className='app-wrapper'>
-            <Header />
+            <Header/>
             <Navbar state={state.sitebar}/>
             {/*<Sitebar state={props.state.sitebar}/>*/}
             <div className='app-wrapper-content'>
@@ -40,10 +40,10 @@ const App = (props: PropsType) => { // приняли в пропсах State и
                         dispatch={props.dispatch}
                         // addMessage={store.addMessage.bind(store)}
                         // updateMessageText={store.updateMessageText.bind(store)}
-                    />} />
-                    <Route path="/news" element={<News />} />
-                    <Route path="/music" element={<Music />} />
-                    <Route path="/settings" element={<Settings />} />
+                    />}/>
+                    <Route path="/news" element={<News/>}/>
+                    <Route path="/music" element={<Music/>}/>
+                    <Route path="/settings" element={<Settings/>}/>
                 </Routes>
             </div>
         </div>

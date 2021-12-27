@@ -1,7 +1,7 @@
-import { sitebarType} from "./state";
+import {sitebarType} from "./state";
 
 let initialState = {
-    dialogsData:[
+    dialogsData: [
         {id: 1, name: "Andrey"},
         {id: 2, name: "Masha"},
         {id: 3, name: "Sasha"},

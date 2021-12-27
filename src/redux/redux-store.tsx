@@ -3,6 +3,8 @@ import {profileReducer} from "./profile_reducer";
 import {dialogsReducer} from "./dialogs_reducer";
 import {sidebarReducer} from "./sidebar_reducer";
 
+export type StoreType = typeof store
+
 let reducers = combineReducers({
     profilePage: profileReducer,
     messagesPage: dialogsReducer,
