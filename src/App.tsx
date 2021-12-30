@@ -8,39 +8,34 @@ import {Route, Routes} from "react-router-dom";
 import News from "./components/news/News";
 import Music from "./components/music/Music";
 import Settings from "./components/settings/Settings";
-import {ActionsType} from "./redux/state";
-import {store, StoreType} from "./redux/redux-store"
+import {StateReduxType} from "./redux/redux-store"
+import DialogsContainer from "./components/dialogs/DialogsContainer";
 // import {addMessage, StateType, store, StoreType, updatePostText} from "./redux/state";
 // import Sitebar from "./components/sitebar/Sitebar";
 
 type PropsType = {
-    // state: StateType
-    store: StoreType
-    dispatch: (action: ActionsType) => void
+    store: StateReduxType
 }
-// store === state
+
 
 const App = (props: PropsType) => { // приняли в пропсах State и сделали типизацию как PropsType, переходим на уроверь ниже в profile или dialogs
-    const state = store.getState()
     return (
         <div className='app-wrapper'>
             <Header/>
-            <Navbar state={state.sitebar}/>
-            {/*<Sitebar state={props.state.sitebar}/>*/}
+            <Navbar state={props.store.sitebar}/>
+            {/*<Sitebar state={props.store.sitebar}/>*/}
             <div className='app-wrapper-content'>
                 <Routes>
-                    <Route path='/profile' element={<Profile
-                        state={state.profilePage}
-                        dispatch={props.dispatch}
-                        // addPost={store.addPost.bind(store)}
-                        // updatePostText={store.updatePostText.bind(store)}
-                    />}/>
-                    <Route path="/dialogs/*" element={<Dialogs
-                        state={state.messagesPage}
-                        dispatch={props.dispatch}
-                        // addMessage={store.addMessage.bind(store)}
-                        // updateMessageText={store.updateMessageText.bind(store)}
-                    />}/>
+                    <Route path='/profile' element={
+                        <Profile
+                            store={props.store.profilePage}
+                        />
+                    }/>
+                    <Route path="/dialogs/*" element={
+                        <DialogsContainer
+                            store={props.store.messagesPage}
+                        />
+                    }/>
                     <Route path="/news" element={<News/>}/>
                     <Route path="/music" element={<Music/>}/>
                     <Route path="/settings" element={<Settings/>}/>

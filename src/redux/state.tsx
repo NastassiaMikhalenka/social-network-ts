@@ -130,7 +130,7 @@ export const store: StoreType = {
     //     this._state.messagesPage.newMessage = newMessage
     //     this._callSubscribe(this._state) // был state
     // },
-    subscribe(callback) {
+    subscribe(callback: (state: StateType) => void) {
         this._callSubscribe = callback // паттерн
     },
     dispatch(action) {

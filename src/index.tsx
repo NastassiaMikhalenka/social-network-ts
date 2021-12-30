@@ -6,19 +6,14 @@ import App from './App';
 import {BrowserRouter} from "react-router-dom";
 import {store} from './redux/redux-store';
 
+let state = store.getState()
 
-let rerenderEntireTree = () => {
+let rerenderEntireTree = () => { // state: StateType
     ReactDOM.render(
         <React.StrictMode>
             <BrowserRouter>
                 <App
-                    store={store}
-                    dispatch={store.dispatch.bind(store)}
-                    // state={store.getState()}// state передаем ниже в App
-                    //  addPost={store.addPost.bind(store)}
-                    //  updatePostText={store.updatePostText.bind(store)}
-                    //  addMessage={store.addMessage.bind(store)}
-                    //  updateMessageText={store.updateMessageText.bind(store)}
+                    store={state}
                 />
             </BrowserRouter>
         </React.StrictMode>,
@@ -29,3 +24,7 @@ let rerenderEntireTree = () => {
 rerenderEntireTree()
 // type subscribeType = (rerenderEntireTree: () => subscribe) => void
 store.subscribe(rerenderEntireTree)
+
+// rerenderEntireTree(store.getState())
+// // type subscribeType = (rerenderEntireTree: () => subscribe) => void
+// store.subscribe(rerenderEntireTree)
