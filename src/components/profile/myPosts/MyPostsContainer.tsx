@@ -106,7 +106,7 @@ let mapDispatchToProps = (dispatch: Dispatch): mapDispatchToPropsType => {
             dispatch(updateNewPostTextAC(text))
         },
         addPost: (newPost: string) => {
-            dispatch(addPostAC(newPost))
+            dispatch(addPostAC(newPost)) //   проверить
         }
     }
 }
