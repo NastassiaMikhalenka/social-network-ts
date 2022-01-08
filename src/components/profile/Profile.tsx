@@ -23,8 +23,8 @@ const Profile = (props: PropsType) => { // принимаем в  пропсах
                 description={"Freelance UX/UI designer, 80+ projects in web design, mobile apps  (iOS & android) and creative projects. Open to offers."}
             />
             <MyPostsContainer
-                postsData={props.store.postsData}
-                newPostText={props.store.newPostText}
+                // postsData={props.store.postsData}
+                // newPostText={props.store.newPostText}
                 // dispatch={props.dispatch}
                 // addPost={props.addPost}
                 // updatePostText={props.updatePostText}

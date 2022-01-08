@@ -33,21 +33,6 @@ export const profileReducer = (state = initialState, action: ActionsType): Profi
         default:
             return state;
     }
-    // if(action.type === ADD_POST){ // 38video
-    //     let newPost: PostsDataType = {
-    //         id: 3,
-    //         message: state.newPostText,
-    //         likeCount: 0
-    //     }
-    //     state.postsData.push(newPost)
-    //     state.newPostText = ''
-    //     // this._callSubscribe(this._state)
-    // }
-    // else if(action.type === UPDATE_NEW_POST_TEXT) {
-    //     state.newPostText = action.newText
-    //     // this._callSubscribe(this._state)
-    // }
-    // return state
 }
 export type ActionsTypeForProfile =
     AddPostActionType |

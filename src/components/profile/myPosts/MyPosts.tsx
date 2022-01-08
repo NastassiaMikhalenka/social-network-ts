@@ -7,17 +7,18 @@ import AddBtn from "../../../assets/add.png"
 // import Image from "../../../assets/image.png"
 import {ActionsType, PostsDataType} from "../../../redux/state";
 import {addPostAC, updateNewPostTextAC} from "../../../redux/profile_reducer";
+import {MyPostsPropsType} from "./MyPostsContainer";
 // import PostAvatar from "../../../assets/PhotoGirl.png"
 
-type PropsType = {
-    newPostText: string
-    postsData: Array<PostsDataType>
-    addPost: () => void
-    updatePostText: (newText: string) => void
+// type PropsType = {
+//     newPostText: string
+//     postsData: Array<PostsDataType>
+//     addPost: () => void
+//     updatePostText: (newText: string) => void
+//
+// }
 
-}
-
-const MyPosts = (props: PropsType) => { // принимаем в пропсах postsData и сделали типизацию как PropsType, переходим на уроверь ниже в Post
+const MyPosts = (props: MyPostsPropsType) => { // принимаем в пропсах postsData и сделали типизацию как PropsType, переходим на уроверь ниже в Post
     let postsElements =
         props.postsData.map(post => <Post
             key={post.id}
@@ -30,7 +31,7 @@ const MyPosts = (props: PropsType) => { // принимаем в пропсах 
     const addPost = () => {
         // props.dispatch(addPostAC(props.newPostText))  // с применением доп функций в стейте
         // props.dispatch({type: "ADD_POST"}) // без применения доп финкций в стейте
-        props.addPost() // первоначальный вариант
+        props.addPost(props.newPostText) // первоначальный вариант
     }
 
     // Action Creator - функция, которая возвращает экшен. Объект с типом и данными
@@ -48,7 +49,7 @@ const MyPosts = (props: PropsType) => { // принимаем в пропсах 
 
         let text = newPostElement.current?.value // первоначальный вариант
         if (text) {
-            props.updatePostText(text)
+            props.onPostChange(text)
         }
     }
 
