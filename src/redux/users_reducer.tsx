@@ -1,9 +1,6 @@
-export type usersPageType = {
-    users: Array<userType>
-}
-
 export type userType = {
     id: number
+    avatarUrl: string
     followed: boolean
     fullName: string
     status: string
@@ -17,15 +14,30 @@ type locationType = {
 
 export let initialState = {
     users: [
-        {
-            id: 1,
-            followed: true,
-            fullName: 'Anastasia',
-            status: 'I am ok',
-            location: {city: 'Minsk', country: 'Belarus'}
-        },
-        {id: 2, followed: false, fullName: 'Valeria', status: 'while', location: {city: 'Moscow', country: 'Russia'}},
-        {id: 3, followed: true, fullName: 'Alexander', status: 'do', location: {city: 'Kiev', country: 'Ukraine'}},
+        // {
+        //     id: 1,
+        //     avatarUrl: 'https://ps.w.org/simple-user-avatar/assets/icon-256x256.png?rev=2413146',
+        //     followed: true,
+        //     fullName: 'Anastasia',
+        //     status: 'I am ok',
+        //     location: {city: 'Minsk', country: 'Belarus'}
+        // },
+        // {
+        //     id: 2,
+        //     avatarUrl: 'https://ps.w.org/simple-user-avatar/assets/icon-256x256.png?rev=2413146',
+        //     followed: false,
+        //     fullName: 'Valeria',
+        //     status: 'while',
+        //     location: {city: 'Moscow', country: 'Russia'}
+        // },
+        // {
+        //     id: 3,
+        //     avatarUrl: 'https://ps.w.org/simple-user-avatar/assets/icon-256x256.png?rev=2413146',
+        //     followed: true,
+        //     fullName: 'Alexander',
+        //     status: 'do',
+        //     location: {city: 'Kiev', country: 'Ukraine'}
+        // },
     ] as Array<userType>
 };
 
@@ -42,12 +54,12 @@ export const usersReducer = (state: initialStateType = initialState, action: act
         case FOLLOW:
             return {
                 ...state,
-                users: state.users.map(user => user.id === action.payload.id ? {...user, followed: true} : user)
+                users: state.users.map(user => user.id === action.payload.id ? {...user, followed: false} : user)
             }
         case UNFOLLOW: {
             return {
                 ...state,
-                users: state.users.map(user => user.id === action.payload.id ? {...user, followed: false} : user)
+                users: state.users.map(user => user.id === action.payload.id ? {...user, followed: true} : user)
             }
         }
         case SET_USERS:
