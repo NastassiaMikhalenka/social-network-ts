@@ -1,11 +1,5 @@
-import React, {RefObject} from "react";
-import Post from "./post/Post";
-import classes from "./myPosts.module.css";
-import AddBtn from "../../../assets/add.png"
-// import Paperclip from "../../../assets/paperclip.png"
-// import Group from "../../../assets/Group.png"
-// import Image from "../../../assets/image.png"
-import {ActionsType, MessagesPageType, PostsDataType, ProfilePageType, StoreType} from "../../../redux/state";
+import React from "react";
+// import {ActionsType, MessagesPageType, PostsDataType, ProfilePageType, StoreType} from "../../../redux/state";
 import {addPostAC, updateNewPostTextAC} from "../../../redux/profile_reducer";
 import MyPosts from "./MyPosts";
 import {StateReduxType} from "../../../redux/redux-store";
@@ -80,6 +74,11 @@ import Dialogs from "../../dialogs/Dialogs";
 // //     return <button className={classes.addBtn}><img src={props.bgImg} alt={props.title}/></button>
 // // }
 
+export type PostsDataType = {
+    id: number
+    message: string
+    likeCount: number
+}
 
 type mapStateToPropsType = {
     postsData: Array<PostsDataType>

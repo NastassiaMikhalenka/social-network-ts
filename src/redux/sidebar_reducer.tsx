@@ -1,5 +1,11 @@
-import {sitebarType} from "./state";
+export type sitebarType = {
+    dialogsData: Array<DialogItemType>
+}
 
+export type DialogItemType = {
+    id: number
+    name: string
+}
 let initialState = {
     dialogsData: [
         {id: 1, name: "Andrey"},

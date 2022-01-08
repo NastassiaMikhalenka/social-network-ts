@@ -1,4 +1,13 @@
-import {PostsDataType, ProfilePageType, ActionsType} from "./state";
+type PostsDataType = {
+    id: number
+    message: string
+    likeCount: number
+}
+
+type ProfilePageType = {
+    postsData: Array<PostsDataType>
+    newPostText: string
+}
 
 const ADD_POST = "ADD_POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE_NEW_POST_TEXT";
@@ -37,7 +46,7 @@ export const profileReducer = (state = initialState, action: ActionsType): Profi
             return state;
     }
 }
-export type ActionsTypeForProfile =
+export type ActionsType =
     AddPostActionType |
     UpdateNewPostTextActionType
 

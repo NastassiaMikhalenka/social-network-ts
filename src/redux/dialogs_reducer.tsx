@@ -1,7 +1,22 @@
-import {MessageItemType, MessagesPageType, ActionsType} from "./state";
+// import {MessageItemType, MessagesPageType, ActionsType} from "./state";
 
 const ADD_MESSAGE = "ADD_MESSAGE";
 const UPDATE_NEW_MESSAGE_TEXT = "UPDATE_NEW_MESSAGE_TEXT";
+
+export type MessageItemType = {
+    id: number
+    message: string
+}
+export type MessagesPageType = {
+    dialogsData: Array<DialogItemType>
+    messagesData: Array<MessageItemType>
+    newMessage: string
+}
+
+export type DialogItemType = {
+    id: number
+    name: string
+}
 
 let initialState = {
     dialogsData: [
@@ -41,7 +56,7 @@ export const dialogsReducer = (state: MessagesPageType = initialState, action: A
     }
 }
 
-export type ActionsTypeForMessages =
+export type ActionsType =
     AddMessageActionType |
     UpdateNewPostMessageActionType
 

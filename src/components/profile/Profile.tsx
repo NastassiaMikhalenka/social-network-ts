@@ -6,7 +6,7 @@ import HeaderProfile from "../../assets/headerPhoto.png";
 import Avatar from "../../assets/user.png";
 import MyPostsContainer, {MyPostsPropsType} from "./myPosts/MyPostsContainer";
 import {StateReduxType} from "../../redux/redux-store";
-import {ProfilePageType} from "../../redux/state";
+// import {ProfilePageType} from "../../redux/state";
 
 // type PropsType = {
 //     store: ProfilePageType

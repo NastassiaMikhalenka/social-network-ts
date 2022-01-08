@@ -1,6 +1,6 @@
 import React from "react";
 import classes from "./dialogs.module.css"
-import { MessagesPageType} from "../../redux/state";
+// import { MessagesPageType} from "../../redux/state";
 import {addMessageAC, updateNewMessageTextAC} from "../../redux/dialogs_reducer";
 import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
@@ -54,6 +54,22 @@ import {Dispatch} from "redux";
 //         />
 //     )
 // }
+
+type MessagesPageType = {
+    dialogsData: Array<DialogItemType>
+    messagesData: Array<MessageItemType>
+    newMessage: string
+}
+
+type MessageItemType = {
+    id: number
+    message: string
+}
+
+type DialogItemType = {
+    id: number
+    name: string
+}
 
 type mapStateToPropsType = {
     messagesPage: MessagesPageType

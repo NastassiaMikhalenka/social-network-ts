@@ -5,7 +5,7 @@ import AddBtn from "../../../assets/add.png"
 // import Paperclip from "../../../assets/paperclip.png"
 // import Group from "../../../assets/Group.png"
 // import Image from "../../../assets/image.png"
-import {ActionsType, PostsDataType} from "../../../redux/state";
+// import {ActionsType, PostsDataType} from "../../../redux/state";
 import {addPostAC, updateNewPostTextAC} from "../../../redux/profile_reducer";
 import {MyPostsPropsType} from "./MyPostsContainer";
 // import PostAvatar from "../../../assets/PhotoGirl.png"
