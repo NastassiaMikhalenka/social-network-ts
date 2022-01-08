@@ -26,16 +26,8 @@ const App = (props: PropsType) => { // приняли в пропсах State и
             {/*<Sitebar state={props.store.sitebar}/>*/}
             <div className='app-wrapper-content'>
                 <Routes>
-                    <Route path='/profile' element={
-                        <Profile
-                            store={props.store.profilePage}
-                        />
-                    }/>
-                    <Route path="/dialogs/*" element={
-                        <DialogsContainer
-                            // store={props.store.messagesPage}
-                        />
-                    }/>
+                    <Route path='/profile' element={<Profile/>}/>
+                    <Route path="/dialogs/*" element={<DialogsContainer/>}/>
                     <Route path="/news" element={<News/>}/>
                     <Route path="/music" element={<Music/>}/>
                     <Route path="/settings" element={<Settings/>}/>

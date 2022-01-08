@@ -4,15 +4,15 @@ import MyPosts from "./myPosts/MyPosts";
 import ProfileInfo from "./profileInfo/ProfileInfo";
 import HeaderProfile from "../../assets/headerPhoto.png";
 import Avatar from "../../assets/user.png";
-import MyPostsContainer from "./myPosts/MyPostsContainer";
+import MyPostsContainer, {MyPostsPropsType} from "./myPosts/MyPostsContainer";
 import {StateReduxType} from "../../redux/redux-store";
 import {ProfilePageType} from "../../redux/state";
 
-type PropsType = {
-    store: ProfilePageType
-}
+// type PropsType = {
+//     store: ProfilePageType
+// }
 
-const Profile = (props: PropsType) => { // принимаем в  пропсах postsData и сделали типизацию как PropsType, переходим на уроверь ниже в MyPosts
+const Profile = () => { // принимаем в  пропсах postsData и сделали типизацию как PropsType, переходим на уроверь ниже в MyPosts
     return (
         <>
             <ProfileInfo
