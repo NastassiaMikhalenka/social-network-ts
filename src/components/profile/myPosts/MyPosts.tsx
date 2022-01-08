@@ -25,32 +25,36 @@ const MyPosts = (props: MyPostsPropsType) => { // принимаем в проп
             id={post.id}
             message={post.message}
             likeCount={post.likeCount}/>)
-
+    //
     let newPostElement: RefObject<HTMLTextAreaElement> = React.createRef();
-
-    const addPost = () => {
-        // props.dispatch(addPostAC(props.newPostText))  // с применением доп функций в стейте
-        // props.dispatch({type: "ADD_POST"}) // без применения доп финкций в стейте
-        props.addPost() // первоначальный вариант
-    }
+    //
+    // const addPost = () => {
+    //     // props.dispatch(addPostAC(props.newPostText))  // с применением доп функций в стейте
+    //     // props.dispatch({type: "ADD_POST"}) // без применения доп финкций в стейте
+    //     props.addPost() // первоначальный вариант
+    // }
 
     // Action Creator - функция, которая возвращает экшен. Объект с типом и данными
     // ДОП ФУНКЦИЯ!!!
-    const onPostChange = () => {
-        // let text = newPostElement.current?.value
-        // if(text) {
-        //     props.dispatch(updateNewPostTextAC(text)) // с применением доп функций в стейте
-        // }
+    // const onPostChange = () => {
+    //     // let text = newPostElement.current?.value
+    //     // if(text) {
+    //     //     props.dispatch(updateNewPostTextAC(text)) // с применением доп функций в стейте
+    //     // }
+    //
+    //     // let text = newPostElement.current?.value // без применения доп финкций в стейте
+    //     // if(text) {
+    //     //     props.dispatch({type: "UPDATE_NEW_POST_TEXT", newText: text})
+    //     // }
+    //
+    //     let text = newPostElement.current?.value // первоначальный вариант
+    //     if (text) {
+    //         props.onPostChange(text)
+    //     }
+    // }
 
-        // let text = newPostElement.current?.value // без применения доп финкций в стейте
-        // if(text) {
-        //     props.dispatch({type: "UPDATE_NEW_POST_TEXT", newText: text})
-        // }
-
-        let text = newPostElement.current?.value // первоначальный вариант
-        if (text) {
-            props.onPostChange(text)
-        }
+    const onPostChange = (e: React.ChangeEvent<HTMLTextAreaElement>)=> {
+        props.onPostChange(e.currentTarget.value)
     }
 
     return (
@@ -62,7 +66,7 @@ const MyPosts = (props: MyPostsPropsType) => { // принимаем в проп
                           className={classes.postTextarea}
                           placeholder={"Type your post"} rows={3}/>
                 <div className={classes.blockBtns}>
-                    <button onClick={addPost} className={classes.addBtn}><img src={AddBtn} alt="#"/></button>
+                    <button onClick={props.addPost} className={classes.addBtn}><img src={AddBtn} alt="#"/></button>
                     {/*<Button bgImg={AddBtn} title={'#'}/>*/}
                     {/*<Button bgImg={Paperclip} title={'#'}/>*/}
                     {/*<Button bgImg={Group} title={'#'}/>*/}

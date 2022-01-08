@@ -29,26 +29,29 @@ const Dialogs = (props: DialogsPropsType) => { // приняли в пропса
         id={dialog.id}
     />)
 
-    let newMessageElement: RefObject<HTMLTextAreaElement> = React.createRef();
+    // let newMessageElement: RefObject<HTMLTextAreaElement> = React.createRef();
+
+    const onMessageChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+        props.onMessageChange(e.currentTarget.value)
+    }
 
     return (
         <div>
-        <div className={classes.dialogs}>
-            <div className={classes.dialogsItem}>
-                {dialogsElements}
-            </div>
-            <div className={classes.messages}>
-                {messagesElements}
-                <div>
-                    <textarea ref={newMessageElement}
-                              value={props.messagesPage.newMessage}
-                              // onChange={props.onMessageChange}
+            <div className={classes.dialogs}>
+                <div className={classes.dialogsItem}>
+                    {dialogsElements}
+                </div>
+                <div className={classes.messages}>
+                    {messagesElements}
+                    <div>
+                    <textarea
+                        value={props.messagesPage.newMessage}
+                        onChange={onMessageChange}
                     />
-                    <button onClick={props.sendMessage}>Send</button>
+                        <button onClick={props.sendMessage}>Send</button>
+                    </div>
                 </div>
             </div>
-        </div>
-
         </div>
     )
 }
