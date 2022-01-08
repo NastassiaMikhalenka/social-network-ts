@@ -95,7 +95,7 @@ let mapStateToProps = (state: StateReduxType): mapStateToPropsType => {
 
 type mapDispatchToPropsType = {
     onPostChange: (text: string) => void
-    addPost: (newPost: string) => void
+    addPost: () => void
 }
 
 export type MyPostsPropsType = mapStateToPropsType & mapDispatchToPropsType
@@ -105,8 +105,8 @@ let mapDispatchToProps = (dispatch: Dispatch): mapDispatchToPropsType => {
         onPostChange: (text: string) => {
             dispatch(updateNewPostTextAC(text))
         },
-        addPost: (newPost: string) => {
-            dispatch(addPostAC(newPost)) //   проверить
+        addPost: () => {
+            dispatch(addPostAC()) //   проверить
         }
     }
 }

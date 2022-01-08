@@ -31,7 +31,7 @@ const MyPosts = (props: MyPostsPropsType) => { // принимаем в проп
     const addPost = () => {
         // props.dispatch(addPostAC(props.newPostText))  // с применением доп функций в стейте
         // props.dispatch({type: "ADD_POST"}) // без применения доп финкций в стейте
-        props.addPost(props.newPostText) // первоначальный вариант
+        props.addPost() // первоначальный вариант
     }
 
     // Action Creator - функция, которая возвращает экшен. Объект с типом и данными
