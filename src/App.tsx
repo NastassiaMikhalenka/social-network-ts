@@ -33,7 +33,7 @@ const App = (props: PropsType) => { // приняли в пропсах State и
                     }/>
                     <Route path="/dialogs/*" element={
                         <DialogsContainer
-                            store={props.store.messagesPage}
+                            // store={props.store.messagesPage}
                         />
                     }/>
                     <Route path="/news" element={<News/>}/>
