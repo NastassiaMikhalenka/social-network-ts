@@ -26,29 +26,19 @@ export const dialogsReducer = (state: MessagesPageType = initialState, action: A
                 id: 4,
                 message: state.newMessage
             }
-            state.messagesData.push(newMessage)
-            state.newMessage = '';
-            return state;
+            return {
+                ...state,
+                newMessage: '',
+                messagesData: [...state.messagesData, newMessage]
+            }
         case UPDATE_NEW_MESSAGE_TEXT:
-            state.newMessage = action.newMessage;
-            return state
+            return {
+                ...state,
+                newMessage: action.newMessageText
+            }
         default:
             return state;
     }
-    // if(action.type === ADD_MESSAGE) {
-    //     let newMessage: MessageItemType = {
-    //         id: 4,
-    //         message: state.newMessage
-    //     }
-    //     state.messagesData.push(newMessage)
-    //     state.newMessage = ''
-    //     // this._callSubscribe(this._state)
-    // }
-    // else if (action.type === UPDATE_NEW_MESSAGE_TEXT){
-    //     state.newMessage = action.newMessage
-    //     // this._callSubscribe(this._state) // был state
-    // }
-    // return state;
 }
 
 export type ActionsTypeForMessages =
@@ -65,9 +55,9 @@ export const addMessageAC = () => {
         type: "ADD_MESSAGE"
     } as const
 }
-export const updateNewMessageTextAC = (newMessage: string) => {
+export const updateNewMessageTextAC = (newMessageText: string) => {
     return {
         type: "UPDATE_NEW_MESSAGE_TEXT",
-        newMessage: newMessage
+        newMessageText: newMessageText
     } as const
 }

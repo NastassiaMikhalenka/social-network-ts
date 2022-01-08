@@ -1,10 +1,10 @@
 import React from "react";
 import classes from "./dialogs.module.css"
-import {ActionsType, MessagesPageType, StoreType} from "../../redux/state";
+import { MessagesPageType} from "../../redux/state";
 import {addMessageAC, updateNewMessageTextAC} from "../../redux/dialogs_reducer";
 import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
-import {StateReduxType, store} from "../../redux/redux-store";
+import {StateReduxType} from "../../redux/redux-store";
 import {Dispatch} from "redux";
 
 // type PropsType = {
@@ -75,17 +75,15 @@ export type DialogsPropsType = mapStateToPropsType & mapDispatchToPropsType
 let mapDispatchToProps = (dispatch: Dispatch): mapDispatchToPropsType => {
     return {
         onMessageChange: (newMessage: string) => {
-            if (newMessage) {
-                dispatch(updateNewMessageTextAC(newMessage))
-            }
+            dispatch(updateNewMessageTextAC(newMessage))
         },
         sendMessage: () => {
             dispatch(addMessageAC())
+            dispatch(updateNewMessageTextAC(''))
         }
     }
 }
 
 const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs);
-
 
 export default DialogsContainer;
