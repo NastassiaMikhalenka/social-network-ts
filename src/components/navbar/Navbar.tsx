@@ -1,13 +1,7 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
 import classes from "./navbar.module.css"
-// import Sitebar from "../sitebar/Sitebar";
-import {sitebarType, StateType} from "../../redux/state";
-import DialogItem from "../dialogs/DialogItem/DialogItem";
-//
-// type PropsType = {
-//     state: sitebarType
-// }
+
 
 const Navbar = () => {
 
@@ -39,15 +33,24 @@ const NavBarLink = (props: NavNarLinkType) => {
     )
 }
 
-// <div>
-//     <h2>SiteBar</h2>
-//     <div>
-//         {sitebarElements}
-//     </div>
-// </div>
-
-// let sitebarElements = props.state.dialogsData.slice(0, 3).map(dialog => <DialogItem
-//     key={dialog.id}
-//     name={dialog.name}
-//     id={dialog.id}
-// />)
+// import React from "react";
+// import DialogItem from "../dialogs/DialogItem/DialogItem";
+//
+// export const SiteBar = () => {
+//
+//     let sitebarElements = props.state.dialogsData.slice(0, 3).map(dialog => <DialogItem
+//         key={dialog.id}
+//         name={dialog.name}
+//         id={dialog.id}
+//     />)
+//
+//
+//     return (
+//         <div>
+//             <h2>SiteBar</h2>
+//             <div>
+//                 {sitebarElements}
+//             </div>
+//         </div>
+//     )
+// }

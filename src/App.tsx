@@ -10,20 +10,14 @@ import Music from "./components/music/Music";
 import Settings from "./components/settings/Settings";
 import {StateReduxType} from "./redux/redux-store"
 import DialogsContainer from "./components/dialogs/DialogsContainer";
-// import {addMessage, StateType, store, StoreType, updatePostText} from "./redux/state";
-// import Sitebar from "./components/sitebar/Sitebar";
-
-type PropsType = {
-    store: StateReduxType
-}
 
 
-const App = (props: PropsType) => { // приняли в пропсах State и сделали типизацию как PropsType, переходим на уроверь ниже в profile или dialogs
+const App = () => { // приняли в пропсах State и сделали типизацию как PropsType, переходим на уроверь ниже в profile или dialogs
     return (
         <div className='app-wrapper'>
             <Header/>
             <Navbar/>
-            {/*<Sitebar state={props.store.sitebar}/>*/}
+
             <div className='app-wrapper-content'>
                 <Routes>
                     <Route path='/profile' element={<Profile/>}/>
