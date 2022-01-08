@@ -4,17 +4,12 @@ import classes from "./navbar.module.css"
 // import Sitebar from "../sitebar/Sitebar";
 import {sitebarType, StateType} from "../../redux/state";
 import DialogItem from "../dialogs/DialogItem/DialogItem";
+//
+// type PropsType = {
+//     state: sitebarType
+// }
 
-type PropsType = {
-    state: sitebarType
-}
-
-const Navbar = (props:PropsType ) => {
-    let sitebarElements = props.state.dialogsData.slice(0, 3).map(dialog => <DialogItem
-        key={dialog.id}
-        name={dialog.name}
-        id={dialog.id}
-    />)
+const Navbar = () => {
 
     return (
         <nav className={classes.nav}>
@@ -23,12 +18,6 @@ const Navbar = (props:PropsType ) => {
             <NavBarLink linkTo={"/news"} linkName={"News"} />
             <NavBarLink linkTo={"/music"} linkName={"Music"} />
             <NavBarLink linkTo={"/settings"} linkName={"Settings"} />
-            <div>
-                <h2>SiteBar</h2>
-                <div>
-                    {sitebarElements}
-                </div>
-            </div>
         </nav>
     )
 }
@@ -49,3 +38,16 @@ const NavBarLink = (props: NavNarLinkType) => {
         </div>
     )
 }
+
+// <div>
+//     <h2>SiteBar</h2>
+//     <div>
+//         {sitebarElements}
+//     </div>
+// </div>
+
+// let sitebarElements = props.state.dialogsData.slice(0, 3).map(dialog => <DialogItem
+//     key={dialog.id}
+//     name={dialog.name}
+//     id={dialog.id}
+// />)
