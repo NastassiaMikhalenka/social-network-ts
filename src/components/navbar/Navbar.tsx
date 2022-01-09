@@ -12,6 +12,7 @@ const Navbar = () => {
             <NavBarLink linkTo={"/news"} linkName={"News"} />
             <NavBarLink linkTo={"/music"} linkName={"Music"} />
             <NavBarLink linkTo={"/settings"} linkName={"Settings"} />
+            <NavBarLink linkTo={"/users"} linkName={"Users"} />
         </nav>
     )
 }
