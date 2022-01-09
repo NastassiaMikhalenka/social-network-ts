@@ -7,6 +7,7 @@ export let initialState = {
 };
 
 export type userType = {
+    avatarUrl: string;
     id: number
     followed: boolean
     fullName: string
@@ -26,17 +27,17 @@ const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
 
-export const usersReducer = (state: initialStateType, action: actionsType): initialStateType => {
+export const usersReducer = (state: initialStateType = initialState, action: actionsType): initialStateType => {
     switch (action.type) {
         case FOLLOW:
             return {
                 ...state,
-                users: state.users.map(user => user.id === action.payload.id ? {...user, followed: true} : user)
+                users: state.users.map(user => user.id === action.payload.id ? {...user, followed: false} : user)
             }
         case UNFOLLOW: {
             return {
                 ...state,
-                users: state.users.map(user => user.id === action.payload.id ? {...user, followed: false} : user)
+                users: state.users.map(user => user.id === action.payload.id ? {...user, followed: true} : user)
             }
         }
         case SET_USERS:
