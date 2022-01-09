@@ -1,18 +1,54 @@
 export let initialState = {
     users: [
-        {id: 1, followed: true, fullName: 'Anastasia', status: 'I am ok', location: {city: 'Minsk', country: 'Belarus'}},
-        {id: 2, followed: false, fullName: 'Valeria', status: 'while', location: {city: 'Moscow', country: 'Russia'}},
-        {id: 3, followed: true, fullName: 'Alexander', status: 'do', location: {city: 'Kiev', country: 'Ukraine'}},
+        // {
+        //     id: 1,
+        //     avatarUrl: 'https://png.pngtree.com/png-vector/20190704/ourlarge/pngtree-businessman-user-avatar-free-vector-png-image_1538405.jpg',
+        //     followed: true,
+        //     fullName: 'Anastasia',
+        //     status: 'I am ok',
+        //     location: {city: 'Minsk', country: 'Belarus'}
+        // },
+        // {
+        //     id: 2,
+        //     avatarUrl: 'https://png.pngtree.com/png-vector/20190704/ourlarge/pngtree-businessman-user-avatar-free-vector-png-image_1538405.jpg',
+        //     followed: false,
+        //     fullName: 'Valeria',
+        //     status: 'while',
+        //     location: {city: 'Moscow', country: 'Russia'}
+        // },
+        // {
+        //     id: 3,
+        //     avatarUrl: 'https://png.pngtree.com/png-vector/20190704/ourlarge/pngtree-businessman-user-avatar-free-vector-png-image_1538405.jpg',
+        //     followed: true,
+        //     fullName: 'Alexander',
+        //     status: 'do',
+        //     location: {city: 'Kiev', country: 'Ukraine'}
+        // },
     ] as Array<userType>
 };
-
+// {
+//     "name": "Shubert",
+//     "id": 1,
+//     "photos": {
+//     "small": null,
+//         "large": null
+// },
+//     "status": null,
+//     "followed": false
+// },
 export type userType = {
-    avatarUrl: string;
+    name: string
     id: number
+    photos: {small: string, large: string}
+    status: null | string
     followed: boolean
-    fullName: string
-    status: string
-    location: locationType
+
+    // avatarUrl: string;
+    // id: number
+    // followed: boolean
+    // fullName: string
+    // status: string
+    // location: locationType
 }
 
 type locationType = {

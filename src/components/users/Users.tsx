@@ -1,41 +1,27 @@
 import React from "react";
 import {UsersPropsType} from "./UsersContainer";
+import axios from 'axios'
+import { userType } from "../../redux/users_reducer";
 
 
 export const Users = (props: UsersPropsType) => {
-    if(props.users.length === 0) {
-        props.setUsers([{
-            id: 1,
-            avatarUrl: 'https://ps.w.org/simple-user-avatar/assets/icon-256x256.png?rev=2413146',
-            followed: true,
-            fullName: 'Anastasia',
-            status: 'I am ok',
-            location: {city: 'Minsk', country: 'Belarus'}
-        },
-            {
-                id: 2,
-                avatarUrl: 'https://ps.w.org/simple-user-avatar/assets/icon-256x256.png?rev=2413146',
-                followed: false,
-                fullName: 'Valeria',
-                status: 'while',
-                location: {city: 'Moscow', country: 'Russia'}
-            },
-            {
-                id: 3,
-                avatarUrl: 'https://ps.w.org/simple-user-avatar/assets/icon-256x256.png?rev=2413146',
-                followed: true,
-                fullName: 'Alexander',
-                status: 'do',
-                location: {city: 'Kiev', country: 'Ukraine'}
-            },])
+
+    let getUsers  = () => {
+        if (props.users.length === 0) {
+            axios.get(`https://social-network.samuraijs.com/api/1.0/users`)
+                .then((response: { data: { items: userType[]; }; }) => {
+                    props.setUsers(response.data.items)
+                });
+        }
     }
     return (
         <div>
+            <button onClick={getUsers}>getUsers</button>
             {
                 props.users.map(user => <div key={user.id}>
                     <div>
                         <div>
-                            <img src={user.avatarUrl} alt={"user"} style={{width: "70px", borderRadius: "50%"}}/>
+                            <img src={"user.photos.small"} alt={"user"} style={{width: "70px", borderRadius: "50%"}}/>
                         </div>
                         <div>
                             {user.followed
@@ -50,12 +36,12 @@ export const Users = (props: UsersPropsType) => {
                     </div>
                     <div>
                         <div>
-                            <p>{user.fullName}</p>
+                            <p>{user.name}</p>
                             <p>{user.status}</p>
                         </div>
                         <div>
-                            <p>{user.location.country}</p>
-                            <p>{user.location.city}</p>
+                            <p>{"user.location.country"}</p>
+                            <p>{"user.location.city"}</p>
                         </div>
                     </div>
                 </div>)
