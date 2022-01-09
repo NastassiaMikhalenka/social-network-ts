@@ -3,7 +3,7 @@ import {UsersPropsType} from "./UsersContainer";
 
 
 export const Users = (props: UsersPropsType) => {
-    if(props.users.users.length === 0) {
+    if(props.users.length === 0) {
         props.setUsers([{
             id: 1,
             avatarUrl: 'https://ps.w.org/simple-user-avatar/assets/icon-256x256.png?rev=2413146',
@@ -32,7 +32,7 @@ export const Users = (props: UsersPropsType) => {
     return (
         <div>
             {
-                props.users.users.map(user => <div key={user.id}>
+                props.users.map(user => <div key={user.id}>
                     <div>
                         <div>
                             <img src={user.avatarUrl} alt={"user"} style={{width: "70px", borderRadius: "50%"}}/>

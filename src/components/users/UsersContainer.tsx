@@ -1,15 +1,15 @@
 import React from "react";
 import {connect} from "react-redux";
-import {Users} from "./Users";
 import {StateReduxType} from "../../redux/redux-store";
 import {userType} from "../../redux/users_reducer";
 // import {usersPageType} from "../../redux/users_reducer";
+import {Users} from "./Users";
 import {Dispatch} from "redux";
-import {followAC, initialStateType, setUsersAC, unfollowAC} from "../../redux/users_reducer";
+import {followAC, setUsersAC, unfollowAC} from "../../redux/users_reducer";
 
 
 type mapStateToPropsType = {
-    users: Array<userType>
+    users: userType[]
 }
 type mapDispatchToPropsType = {
     follow: (id: number) => void
