@@ -2,6 +2,7 @@ import React from "react";
 import {UsersPropsType} from "./UsersContainer";
 import axios from 'axios'
 import {userType} from "../../redux/users_reducer";
+import classes from "./stylesUsers.module.css";
 
 class Users extends React.Component<UsersPropsType> {
     // constructor(props: UsersPropsType) { // можно не делать constructor если передаются только встроенные пропсы
@@ -9,34 +10,38 @@ class Users extends React.Component<UsersPropsType> {
     // }
 
     componentDidMount() {
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users`)
-            .then((response: { data: { items: userType[]; }; }) => {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
+            .then((response) => {
                 this.props.setUsers(response.data.items)
+                this.props.setTotalUserCount(response.data.totalUserCount)
             });
     }
 
-    // getUsers  = () => {
-    //     if (this.props.users.length === 0) {
-    //         axios.get(`https://social-network.samuraijs.com/api/1.0/users`)
-    //             .then((response: { data: { items: userType[]; }; }) => {
-    //                 this.props.setUsers(response.data.items)
-    //             });
-    //     }
-    // }
+    onPageChanged = (currentPage: number) => {
+        this.props.setCurrentPage(currentPage)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}&count=${this.props.pageSize}`)
+            .then((response) => {
+                this.props.setUsers(response.data.items)
+            })
+    }
 
     render() {
 
-        let pagesCount = this.props.totalUserCount / this.props.pageSize;
+        let pagesCount = Math.ceil(this.props.totalUserCount / this.props.pageSize);
 
         let pages = [];
-        for(let i = 1; i< pagesCount; i++){
+        for (let i = 1; i < pagesCount; i++) {
             pages.push(i)
         }
         return <div>
             {/*<button onClick={this.getUsers}></button>*/}
             <div>
                 {pages.map(p => {
-                    <span>{p}</span>
+                    return <span
+                        onClick={() => {
+                            this.onPageChanged(p)
+                        }}
+                        className={this.props.currentPage === p ? classes.selectedPage : classes.UsersPage}>{p}</span>
                 })}
             </div>
             {
