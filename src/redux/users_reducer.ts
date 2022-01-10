@@ -24,18 +24,11 @@ export let initialState = {
         //     status: 'do',
         //     location: {city: 'Kiev', country: 'Ukraine'}
         // },
-    ] as Array<userType>
+    ] as Array<userType>,
+    pageSize: 5 as number,
+    totalUserCount: 0 as number,
 };
-// {
-//     "name": "Shubert",
-//     "id": 1,
-//     "photos": {
-//     "small": null,
-//         "large": null
-// },
-//     "status": null,
-//     "followed": false
-// },
+
 export type userType = {
     name: string
     id: number
@@ -51,10 +44,10 @@ export type userType = {
     // location: locationType
 }
 
-type locationType = {
-    city: string
-    country: string
-}
+// type locationType = {
+//     city: string
+//     country: string
+// }
 
 export type initialStateType = typeof initialState;
 export type actionsType = followActionType | unfollowActionType | setUsersActionType

@@ -25,8 +25,20 @@ class Users extends React.Component<UsersPropsType> {
     // }
 
     render() {
+
+        let pagesCount = this.props.totalUserCount / this.props.pageSize;
+
+        let pages = [];
+        for(let i = 1; i< pagesCount; i++){
+            pages.push(i)
+        }
         return <div>
             {/*<button onClick={this.getUsers}></button>*/}
+            <div>
+                {pages.map(p => {
+                    <span>{p}</span>
+                })}
+            </div>
             {
                 this.props.users.map(user => <div key={user.id}>
                     <div>
