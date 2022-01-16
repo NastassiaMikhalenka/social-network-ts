@@ -22,7 +22,7 @@ type ProfileContactType = {
 }
 
 export type ProfileType = {
-    userId: number
+    userId: string
     lookingForAJob: boolean
     lookingForAJobDescription: string
     fullName: string
