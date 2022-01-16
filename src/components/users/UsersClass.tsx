@@ -13,13 +13,13 @@ class Users extends React.Component<UsersPropsType> {
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
             .then((response) => {
                 this.props.setUsers(response.data.items)
-                this.props.setTotalUserCount(response.data.totalUserCount)
+                this.props.setTotalUserCount(response.data.totalCount)
             });
     }
 
-    onPageChanged = (currentPage: number) => {
-        this.props.setCurrentPage(currentPage)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}&count=${this.props.pageSize}`)
+    onPageChanged = (pageNumber: number) => {
+        this.props.setCurrentPage(pageNumber)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
             .then((response) => {
                 this.props.setUsers(response.data.items)
             })
@@ -27,10 +27,10 @@ class Users extends React.Component<UsersPropsType> {
 
     render() {
 
-        let pagesCount = Math.ceil(this.props.totalUserCount / this.props.pageSize);
+        let pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize);
 
         let pages = [];
-        for (let i = 1; i < pagesCount; i++) {
+        for (let i = 1; i <= pagesCount; i++) {
             pages.push(i)
         }
         return <div>
@@ -38,12 +38,13 @@ class Users extends React.Component<UsersPropsType> {
             <div>
                 {pages.map(p => {
                     return <span
-                        onClick={() => {
+                        onClick={(e) => {
                             this.onPageChanged(p)
                         }}
                         className={this.props.currentPage === p ? classes.selectedPage : classes.UsersPage}>{p}</span>
                 })}
             </div>
+            <div>
             {
                 this.props.users.map(user => <div key={user.id}>
                     <div>
@@ -74,7 +75,7 @@ class Users extends React.Component<UsersPropsType> {
                 </div>)
             }
         </div>
-
+        </div>
     }
 }
 

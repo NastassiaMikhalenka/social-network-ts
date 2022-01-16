@@ -25,8 +25,8 @@ export let initialState = {
         //     location: {city: 'Kiev', country: 'Ukraine'}
         // },
     ] as Array<userType>,
-    pageSize: 5 as number,
-    totalUserCount: 0 as number,
+    pageSize: 100 as number,
+    totalUsersCount: 0 as number,
     currentPage: 1 as number,
 };
 
@@ -63,7 +63,7 @@ const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
-const SET_TOTAL_USER_COUNT = 'SET_TOTAL_USER_COUNT';
+const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT';
 
 export const usersReducer = (state: initialStateType = initialState, action: actionsType): initialStateType => {
     switch (action.type) {
@@ -77,18 +77,20 @@ export const usersReducer = (state: initialStateType = initialState, action: act
                 ...state,
                 users: state.users.map(user => user.id === action.payload.id ? {...user, followed: true} : user)
             }
-        case SET_USERS:
+        case SET_USERS: {
             return {
-                ...state, users: [...action.payload.users, ...state.users]
+                ...state, users: action.payload.users
             }
+        }
         case SET_CURRENT_PAGE:
             return {
                 ...state, currentPage: action.payload.currentPage
             }
-        case SET_TOTAL_USER_COUNT:
+        case SET_TOTAL_USERS_COUNT: {
             return {
-                ...state, totalUserCount: action.payload.totalUserCount
+                ...state, totalUsersCount: action.payload.totalUsersCount
             }
+        }
         default:
             return state;
     }
@@ -135,11 +137,11 @@ export const setCurrentPageAC = (currentPage: number) => {
     } as const
 }
 
-export const setTotalUserCountAC = (totalUserCount: number) => {
+export const setTotalUserCountAC = (totalUsersCount: number) => {
     return {
-        type: 'SET_TOTAL_USER_COUNT',
+        type: 'SET_TOTAL_USERS_COUNT',
         payload: {
-            totalUserCount: totalUserCount,
+            totalUsersCount: totalUsersCount,
         }
     } as const
 }
