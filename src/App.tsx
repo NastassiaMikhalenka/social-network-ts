@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
 import Dialogs from "./components/dialogs/Dialogs";
-import Header from "./components/header/Header";
 import Navbar from "./components/navbar/Navbar";
 import Profile from "./components/profile/Profile";
 import {Route, Routes} from "react-router-dom";
@@ -12,12 +11,13 @@ import {StateReduxType} from "./redux/redux-store"
 import DialogsContainer from "./components/dialogs/DialogsContainer";
 import UsersContainer from "./components/users/UsersContainer";
 import ProfileContainer from "./components/profile/profileInfo/ProfileContainer";
+import HeaderContainer from "./components/header/HeaderContainer";
 
 
 const App = () => { // приняли в пропсах State и сделали типизацию как PropsType, переходим на уроверь ниже в profile или dialogs
     return (
         <div className='app-wrapper'>
-            <Header/>
+            <HeaderContainer/>
             <Navbar/>
             <div className='app-wrapper-content'>
                 <Routes>
