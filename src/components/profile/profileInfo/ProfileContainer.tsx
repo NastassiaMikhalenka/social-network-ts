@@ -26,7 +26,7 @@ type mapStateToPropsType = {
     profile: ProfileType
 }
 type mapDispatchToPropsType = {
-    setUserProfile: (profile: boolean) => void
+    setUserProfile: (profile: ProfileType) => void
 }
 
 export type ProfilePropsType = mapStateToPropsType & mapDispatchToPropsType

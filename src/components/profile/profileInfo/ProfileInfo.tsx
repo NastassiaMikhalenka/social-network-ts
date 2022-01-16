@@ -2,10 +2,11 @@ import React from "react";
 import classes from "./profileInfo.module.css";
 import {Preloader} from "../../common/Preloader";
 import imgHeader from '../../../assets/headerPhoto.png'
+import {ProfileType} from "../../../redux/profile_reducer";
 
 
 type PropsType = {
-    profile: any
+    profile: ProfileType
     img?: string
     avatar?: string
     name?: string
