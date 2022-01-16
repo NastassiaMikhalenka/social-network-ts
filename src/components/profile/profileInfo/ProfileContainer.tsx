@@ -3,9 +3,9 @@ import Profile from "../Profile";
 import axios from "axios";
 import {connect} from "react-redux";
 import {StateReduxType} from "../../../redux/redux-store";
-import {setUserProfileAC} from "../../../redux/profile_reducer";
+import {ProfileType, setUserProfileAC} from "../../../redux/profile_reducer";
 
-class ProfileContainer extends React.Component<any>{
+class ProfileContainer extends React.Component<ProfilePropsType>{
 
     componentDidMount() {
         axios.get(`https://social-network.samuraijs.com/api/1.0/profile/2`)
@@ -23,8 +23,14 @@ class ProfileContainer extends React.Component<any>{
    }
 }
 type mapStateToPropsType = {
-    profile: any
+    profile: ProfileType
 }
+type mapDispatchToPropsType = {
+    setUserProfile: (profile: boolean) => void
+}
+
+export type ProfilePropsType = mapStateToPropsType & mapDispatchToPropsType
+
 
 let mapStateToProps = (state: StateReduxType): mapStateToPropsType => ({
     profile: state.profilePage.profile
