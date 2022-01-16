@@ -4,13 +4,36 @@ type PostsDataType = {
     likeCount: number
 }
 
-type ProfilePageType = {
+export type ProfilePageType = {
     postsData: Array<PostsDataType>
     newPostText: string
+    profile: any
+}
+
+export type ProfileType = {
+    userId: number
+    lookingForAJob: boolean
+    lookingForAJobDescription: string
+    fullName: string
+    contacts: {
+        github: string
+        vk: string
+        facebook: string
+        instagram: string
+        twitter: string
+        website: string
+        youtube: string
+        mainLink: string
+    }
+    photos: {
+        small: string
+        large: string
+    }
 }
 
 const ADD_POST = "ADD_POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE_NEW_POST_TEXT";
+const SET_USER_PROFILE = "SET_USER_PROFILE";
 
 let initialState = {
     postsData: [
@@ -22,6 +45,7 @@ let initialState = {
         }
     ],
     newPostText: "",
+    profile: null,
 }
 
 export const profileReducer = (state = initialState, action: ActionsType): ProfilePageType => {
@@ -38,9 +62,12 @@ export const profileReducer = (state = initialState, action: ActionsType): Profi
                 postsData: [newPost, ...state.postsData]
             }
         case UPDATE_NEW_POST_TEXT:
-        return {
-            ...state,
-            newPostText: action.newText
+            return {
+                ...state,
+                newPostText: action.newText
+            }
+        case SET_USER_PROFILE: {
+            return {...state, profile: action.profile}
         }
         default:
             return state;
@@ -48,10 +75,13 @@ export const profileReducer = (state = initialState, action: ActionsType): Profi
 }
 export type ActionsType =
     AddPostActionType |
-    UpdateNewPostTextActionType
+    UpdateNewPostTextActionType |
+    setUserProfileType
 
 type AddPostActionType = ReturnType<typeof addPostAC>
 type UpdateNewPostTextActionType = ReturnType<typeof updateNewPostTextAC>
+type setUserProfileType = ReturnType<typeof setUserProfileAC>
+
 
 // Action Creator - функция, которая возвращает экшен. Объект с типом и данными
 export const addPostAC = () => { // доп функции
@@ -62,6 +92,13 @@ export const addPostAC = () => { // доп функции
 export const updateNewPostTextAC = (newText: string) => {
     return {
         type: "UPDATE_NEW_POST_TEXT",
-        newText: newText
+        newText: newText,
+    } as const
+}
+
+export const setUserProfileAC = (profile: any) => {
+    return {
+        type: "SET_USER_PROFILE",
+        profile: profile,
     } as const
 }

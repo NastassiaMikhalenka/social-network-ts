@@ -55,6 +55,7 @@ type mapStateToPropsType = {
     currentPage: number,
     isFetching: boolean,
 }
+
 type mapDispatchToPropsType = {
     follow: (id: number) => void
     unfollow: (id: number) => void

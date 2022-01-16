@@ -6,29 +6,20 @@ import HeaderProfile from "../../assets/headerPhoto.png";
 import Avatar from "../../assets/user.png";
 import MyPostsContainer, {MyPostsPropsType} from "./myPosts/MyPostsContainer";
 import {StateReduxType} from "../../redux/redux-store";
+import {initialStateType} from "../../redux/users_reducer";
 // import {ProfilePageType} from "../../redux/state";
 
-// type PropsType = {
-//     store: ProfilePageType
-// }
+type PropsType = {
+    profile: any
+}
 
-const Profile = () => { // принимаем в  пропсах postsData и сделали типизацию как PropsType, переходим на уроверь ниже в MyPosts
+const Profile = (props: PropsType ) => { // принимаем в  пропсах postsData и сделали типизацию как PropsType, переходим на уроверь ниже в MyPosts
     return (
         <>
             <ProfileInfo
-                img={HeaderProfile}
-                avatar={Avatar}
-                name={"Ivan Ivanov"}
-                location={"Saint Petersburg, Russian Federation"}
-                description={"Freelance UX/UI designer, 80+ projects in web design, mobile apps  (iOS & android) and creative projects. Open to offers."}
+                profile={props.profile}
             />
             <MyPostsContainer
-                // postsData={props.store.postsData}
-                // newPostText={props.store.newPostText}
-                // dispatch={props.dispatch}
-                // addPost={props.addPost}
-                // updatePostText={props.updatePostText}
-                // store={props.store}
             />
         </>
     )

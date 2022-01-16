@@ -11,6 +11,7 @@ import Settings from "./components/settings/Settings";
 import {StateReduxType} from "./redux/redux-store"
 import DialogsContainer from "./components/dialogs/DialogsContainer";
 import UsersContainer from "./components/users/UsersContainer";
+import ProfileContainer from "./components/profile/profileInfo/ProfileContainer";
 
 
 const App = () => { // приняли в пропсах State и сделали типизацию как PropsType, переходим на уроверь ниже в profile или dialogs
@@ -20,7 +21,7 @@ const App = () => { // приняли в пропсах State и сделали 
             <Navbar/>
             <div className='app-wrapper-content'>
                 <Routes>
-                    <Route path='/profile' element={<Profile/>}/>
+                    <Route path='/profile' element={<ProfileContainer/>}/>
                     <Route path="/dialogs/*" element={<DialogsContainer/>}/>
                     <Route path="/news" element={<News/>}/>
                     <Route path="/music" element={<Music/>}/>
