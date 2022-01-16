@@ -7,7 +7,7 @@ import {followAC, setUsersAC, unfollowAC} from "../../redux/users_reducer";
 import axios from "axios";
 import Users from "./Users";
 
-class UsersAPIComponent extends React.Component<UsersPropsType> {
+class UsersContainer extends React.Component<UsersPropsType> {
     // constructor(props: UsersPropsType) { // можно не делать constructor если передаются только встроенные пропсы
     //     super(props);
     // }
@@ -83,6 +83,4 @@ const mapDispatchToProps = (dispatch: Dispatch): mapDispatchToPropsType => { // 
     }
 }
 
-const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(UsersAPIComponent);
-
-export default UsersContainer;
+export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer);
