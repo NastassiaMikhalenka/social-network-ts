@@ -14,11 +14,11 @@ export interface RoutedProps<Params = any, State = any> {
 
 export function withRouter<P extends RoutedProps>(Child: React.ComponentClass<P>) {
     return (props: Omit<P, keyof RoutedProps>) => {
-        const location = useLocation();
+        // const location = useLocation();
         const params = useParams();
         return <Child {...props as P}
                       params={params}
-                      location={location}
+                      // location={location}
         />;
     }
 }
@@ -27,8 +27,8 @@ class ProfileContainer extends React.Component<PropsType> {
 
     componentDidMount() {
         let userId: string = this.props.params.userId
-        if(!userId){
-            userId = "2"
+        if (!userId){
+            userId='2';
         }
         axios.get(`https://social-network.samuraijs.com/api/1.0/profile/` + userId)
             .then((response) => {
