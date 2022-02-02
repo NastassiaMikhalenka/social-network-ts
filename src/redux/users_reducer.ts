@@ -29,7 +29,7 @@ export let initialState = {
     totalUsersCount: 0 as number,
     currentPage: 1 as number,
     isFetching: false as boolean,
-
+    followingInProgress: [] as Array<number>,
 };
 
 export type userType = {
@@ -61,6 +61,7 @@ export type actionsType =
     | setCurrentPageACType
     | setTotalUserCountACType
     | setToogleIsFetchingACType
+    | toogleFollowingProgressType
 
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
@@ -68,6 +69,8 @@ const SET_USERS = 'SET_USERS';
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT';
 const TOOGLE_IS_FETCHING = 'TOOGLE_IS_FETCHING';
+const TOOGLE_IS_FOLLOWING_PROGRESS = 'TOOGLE_IS_FOLLOWING_PROGRESS';
+
 
 export const usersReducer = (state: initialStateType = initialState, action: actionsType): initialStateType => {
     switch (action.type) {
@@ -100,6 +103,12 @@ export const usersReducer = (state: initialStateType = initialState, action: act
                 ...state, isFetching: action.payload.isFetching
             }
         }
+        case TOOGLE_IS_FOLLOWING_PROGRESS: {
+            return {...state,
+                followingInProgress: action.payload.isFetching
+                    ? [...state.followingInProgress, action.payload.userId]
+                    : state.followingInProgress.filter(id => id != action.payload.userId)}
+        }
         default:
             return state;
     }
@@ -111,6 +120,7 @@ type setUsersActionType = ReturnType<typeof setUsers>
 type setCurrentPageACType = ReturnType<typeof setCurrentPage>
 type setTotalUserCountACType = ReturnType<typeof setTotalUserCount>
 type setToogleIsFetchingACType = ReturnType<typeof setToogleIsFetching>
+type toogleFollowingProgressType = ReturnType<typeof toogleFollowingProgress>
 
 export const follow = (id: number) => {
     return {
@@ -161,6 +171,16 @@ export const setToogleIsFetching = (isFetching: boolean) => {
         type: 'TOOGLE_IS_FETCHING',
         payload: {
             isFetching: isFetching,
+        }
+    } as const
+}
+
+export const toogleFollowingProgress = (isFetching: boolean, userId: number) => {
+    return {
+        type: 'TOOGLE_IS_FOLLOWING_PROGRESS',
+        payload: {
+            isFetching: isFetching,
+            userId: userId
         }
     } as const
 }
