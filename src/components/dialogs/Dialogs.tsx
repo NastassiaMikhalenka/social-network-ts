@@ -6,6 +6,7 @@ import DialogItem from "./DialogItem/DialogItem";
 import {addMessageAC, updateNewMessageTextAC} from "../../redux/dialogs_reducer";
 import {DialogsPropsType} from "./DialogsContainer";
 
+
 // type PropsType = {
 //     dialogsData: Array<DialogItemType>
 //     newMessage: string
@@ -34,6 +35,7 @@ const Dialogs = (props: DialogsPropsType) => { // приняли в пропса
     const onMessageChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         props.onMessageChange(e.currentTarget.value)
     }
+
 
     return (
         <div>

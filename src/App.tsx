@@ -12,6 +12,7 @@ import DialogsContainer from "./components/dialogs/DialogsContainer";
 import UsersContainer from "./components/users/UsersContainer";
 import ProfileContainer from "./components/profile/profileInfo/ProfileContainer";
 import HeaderContainer from "./components/header/HeaderContainer";
+import {Login} from "./components/Login/Login";
 
 
 const App = () => { // приняли в пропсах State и сделали типизацию как PropsType, переходим на уроверь ниже в profile или dialogs
@@ -33,6 +34,7 @@ const App = () => { // приняли в пропсах State и сделали 
                     <Route path="/music" element={<Music/>}/>
                     <Route path="/settings" element={<Settings/>}/>
                     <Route path="/users" element={<UsersContainer/>}/>
+                    <Route path="/login" element={<Login/>}/>
                 </Routes>
             </div>
         </div>

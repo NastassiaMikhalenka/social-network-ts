@@ -73,11 +73,13 @@ type DialogItemType = {
 
 type mapStateToPropsType = {
     messagesPage: MessagesPageType
+    isAuth: boolean
 }
 
 let mapStateToProps = (state: StateReduxType): mapStateToPropsType => {
     return {
-        messagesPage: state.messagesPage
+        messagesPage: state.messagesPage,
+        isAuth: state.auth.isAuth
     }
 }
 
