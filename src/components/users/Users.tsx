@@ -1,5 +1,5 @@
 import React from "react";
-import {toogleFollowingProgress, userType} from "../../redux/users_reducer";
+import {userType} from "../../redux/users_reducer";
 import classes from "./stylesUsers.module.css";
 import userPhoto from '../../assets/user.png'
 import {NavLink} from "react-router-dom";
@@ -15,7 +15,7 @@ type PropsType = {
     follow: (id: number) => void
     unfollow: (id: number) => void
     followingInProgress: Array<number>
-    toogleFollowingProgress: (isFetching: boolean, id: number) => void
+    // toogleFollowingProgress: (isFetching: boolean, id: number) => void
 }
 
 export const Users = (props: PropsType) => {
@@ -52,26 +52,28 @@ export const Users = (props: PropsType) => {
                                 {user.followed
                                     ? <button disabled={props.followingInProgress.some(id => id === user.id)}
                                               onClick={() => {
-                                                  props.toogleFollowingProgress(true, user.id)
-                                                  usersAPI.unFollow(user.id)
-                                                      .then((data) => {
-                                                          if (data.resultCode === 0) {
-                                                              props.follow(user.id)
-                                                          }
-                                                          props.toogleFollowingProgress(false, user.id)
-                                                      });
+                                                  props.unfollow(user.id)
+                                                  // props.toogleFollowingProgress(true, user.id)
+                                                  // usersAPI.unFollow(user.id)
+                                                  //     .then((data) => {
+                                                  //         if (data.resultCode === 0) {
+                                                  //             props.unfollow(user.id)
+                                                  //         }
+                                                  //         props.toogleFollowingProgress(false, user.id)
+                                                  //     });
                                               }}>UnFollow</button>
                                     : <button
                                         disabled={props.followingInProgress.some(id => id === user.id)}
                                         onClick={() => {
-                                            props.toogleFollowingProgress(true, user.id)
-                                            usersAPI.follow(user.id)
-                                                .then((response) => {
-                                                    if (response.data.resultCode === 0) {
-                                                        props.unfollow(user.id)
-                                                    }
-                                                    props.toogleFollowingProgress(false, user.id)
-                                                });
+                                            props.follow(user.id)
+                                            // props.toogleFollowingProgress(true, user.id)
+                                            // usersAPI.follow(user.id)
+                                            //     .then((response) => {
+                                            //         if (response.data.resultCode === 0) {
+                                            //             props.follow(user.id)
+                                            //         }
+                                            //         props.toogleFollowingProgress(false, user.id)
+                                            //     });
                                         }}>Follow</button>
                                 }
 

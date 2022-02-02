@@ -2,8 +2,9 @@ import React from "react";
 import {connect} from "react-redux";
 import {StateReduxType} from "../../redux/redux-store";
 import {
+    getUsersThunkCreator,
     setCurrentPage,
-    setToogleIsFetching,
+    // setToogleIsFetching,
     setTotalUserCount,
     toogleFollowingProgress,
     userType
@@ -21,21 +22,23 @@ class UsersContainer extends React.Component<UsersPropsType> {
     // }
 
     componentDidMount() {
-        this.props.setToogleIsFetching(true)
-        usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then((data) => {
-            this.props.setToogleIsFetching(false)
-            this.props.setUsers(data.items)
-            this.props.setTotalUserCount(data.totalCount)
-        });
+        this.props.getUsers(this.props.currentPage, this.props.pageSize)
+        // this.props.setToogleIsFetching(true)
+        // usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then((data) => {
+        //     this.props.setToogleIsFetching(false)
+        //     this.props.setUsers(data.items)
+        //     this.props.setTotalUserCount(data.totalCount)
+        // });
     }
 
     onPageChanged = (pageNumber: number) => {
-        this.props.setToogleIsFetching(true)
-        this.props.setCurrentPage(pageNumber)
-        usersAPI.getUsers(pageNumber, this.props.pageSize).then((data) => {
-            this.props.setToogleIsFetching(false)
-            this.props.setUsers(data.items)
-        })
+        this.props.getUsers(pageNumber, this.props.pageSize)
+        // this.props.setCurrentPage(pageNumber)
+        // this.props.setToogleIsFetching(true)
+        // usersAPI.getUsers(pageNumber, this.props.pageSize).then((data) => {
+        //     this.props.setToogleIsFetching(false)
+        //     this.props.setUsers(data.items)
+        // })
     }
 
     render() {
@@ -51,7 +54,7 @@ class UsersContainer extends React.Component<UsersPropsType> {
                    follow={this.props.follow}
                    unfollow={this.props.unfollow}
                    followingInProgress={this.props.followingInProgress}
-                   toogleFollowingProgress={this.props.toogleFollowingProgress}
+                   // toogleFollowingProgress={this.props.toogleFollowingProgress}
             />
         </>
     }
@@ -69,11 +72,12 @@ type mapStateToPropsType = {
 type mapDispatchToPropsType = {
     follow: (id: number) => void
     unfollow: (id: number) => void
-    setUsers: (users: Array<userType>) => void
+    // setUsers: (users: Array<userType>) => void
     setCurrentPage: (currentPage: number) => void
     setTotalUserCount: (totalUserCount: number) => void
-    setToogleIsFetching: (isFetching: boolean) => void
+    // setToogleIsFetching: (isFetching: boolean) => void
     toogleFollowingProgress: (isFetching: boolean, id: number) => void
+    getUsers: (currentPage: number, pageSize: number) => void
 }
 
 export type UsersPropsType = mapStateToPropsType & mapDispatchToPropsType
@@ -114,5 +118,7 @@ const mapStateToProps = (state: StateReduxType): mapStateToPropsType => {
 //export default connect(mapStateToProps, {follow: followAC, etc})(UsersContainer);
 
 export default connect(mapStateToProps, {
-    follow, unfollow, setUsers, setCurrentPage, setTotalUserCount, setToogleIsFetching, toogleFollowingProgress
+    follow, unfollow, setCurrentPage, setTotalUserCount,
+    toogleFollowingProgress,
+    getUsers: getUsersThunkCreator
 })(UsersContainer);
