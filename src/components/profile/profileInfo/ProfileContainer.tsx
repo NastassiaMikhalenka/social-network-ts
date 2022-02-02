@@ -54,7 +54,7 @@ class ProfileContainer extends React.Component<PropsType> {
     }
 }
 
-type mapStateToPropsType = {
+export type mapStateToPropsType = {
     profile: ProfileType
 }
 type mapDispatchToPropsType = {
