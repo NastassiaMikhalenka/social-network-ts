@@ -24,10 +24,23 @@ export const usersAPI = {
         return instance.get(`users?page=${currentPage}&count=${pageSize}` )
             .then(response => response.data)
     },
+    getProfile(userId: string){
+        return instance.get(`profile/` + userId)
+            .then(response => response.data)
+    },
     follow(userId: number) {
-        return instance.post(`follow/${userId}`).then(response => response.data)
+        return instance.post(`follow/${userId}`)
+            .then(response => response.data)
     },
     unFollow(userId:number){
-        return instance.delete(`follow/${userId}`).then(response => response.data)
+        return instance.delete(`follow/${userId}`)
+            .then(response => response.data)
     }
+}
+
+export const authAPI = {
+    me ()  {
+        return instance.get(`auth/me`,)
+            .then(response => response.data)
+    },
 }

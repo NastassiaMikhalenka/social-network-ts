@@ -1,3 +1,6 @@
+import {usersAPI} from "../API/api";
+import {Dispatch} from "redux";
+
 type PostsDataType = {
     id: number
     message: string
@@ -103,4 +106,11 @@ export const setUserProfileAC = (profile: ProfileType) => {
         type: "SET_USER_PROFILE",
         profile: profile,
     } as const
+}
+
+// THUNK
+export const getUserProfileThunk = (userId: string) => (dispatch: Dispatch) => {
+    usersAPI.getProfile(userId).then((response) => {
+        dispatch(setUserProfileAC(response.data))
+    })
 }
