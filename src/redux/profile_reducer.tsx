@@ -111,6 +111,6 @@ export const setUserProfileAC = (profile: ProfileType) => {
 // THUNK
 export const getUserProfileThunk = (userId: string) => (dispatch: Dispatch) => {
     usersAPI.getProfile(userId).then((response) => {
-        dispatch(setUserProfileAC(response.data))
+        dispatch(setUserProfileAC(response))
     })
 }

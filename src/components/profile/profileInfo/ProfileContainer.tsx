@@ -28,12 +28,12 @@ export function withRouter<P extends RoutedProps>(Child: React.ComponentClass<P>
 }
 
 class ProfileContainer extends React.Component<PropsType> {
-
     componentDidMount() {
         let userId: string = this.props.params.userId
         if (!userId){
             userId='2';
         }
+        // debugger
         this.props.getUserProfileThunk(userId)
         // usersAPI.getProfile(userId).then((response) => {
         //     this.props.setUserProfile(response.data)
@@ -48,7 +48,7 @@ class ProfileContainer extends React.Component<PropsType> {
     render() {
         return (
             <>
-                <Profile {...this.props} profile={this.props.profile}/>
+                <Profile profile={this.props.profile}/>
             </>
         )
     }
